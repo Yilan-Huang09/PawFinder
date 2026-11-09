@@ -39,6 +39,7 @@ class BaseConfig:
     MAX_SIGHTING_PHOTOS = int(os.getenv("MAX_SIGHTING_PHOTOS", "4"))
     UPLOAD_FOLDER = _upload_folder()
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(",")
+    USE_REUNION_PROCEDURE = True
 
 
 class DevelopmentConfig(BaseConfig):
@@ -57,6 +58,7 @@ class TestingConfig(BaseConfig):
     )
     SQLALCHEMY_ENGINE_OPTIONS = {}
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)
+    USE_REUNION_PROCEDURE = False
 
 
 class ProductionConfig(BaseConfig):

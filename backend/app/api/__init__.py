@@ -24,6 +24,8 @@ from .auth import auth_bp  # noqa: E402
 from .cases import cases_bp  # noqa: E402
 from .matches import matches_bp  # noqa: E402
 from .pets import pets_bp  # noqa: E402
+from .reunions import reunions_bp  # noqa: E402
+from .search import search_bp  # noqa: E402
 from .sightings import sightings_bp  # noqa: E402
 from .users import users_bp  # noqa: E402
 
@@ -31,5 +33,7 @@ api_v1.register_blueprint(auth_bp)
 api_v1.register_blueprint(cases_bp)
 api_v1.register_blueprint(matches_bp)
 api_v1.register_blueprint(pets_bp)
+api_v1.register_blueprint(reunions_bp)
+api_v1.register_blueprint(search_bp)
 api_v1.register_blueprint(sightings_bp)
 api_v1.register_blueprint(users_bp)

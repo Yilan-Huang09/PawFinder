@@ -9,6 +9,8 @@ from .pet import PetCreateRequest, PetUpdateRequest
 from .case import CaseCreateRequest, CaseUpdateRequest
 from .sighting import SightingCreateRequest, SightingUpdateRequest
 from .match import MatchReviewRequest
+from .reunion import ReunionCreateRequest
+from .search import SearchAreaCreateRequest, TaskProgressRequest
 
 __all__ = [
     "ChangePasswordRequest",
@@ -23,4 +25,7 @@ __all__ = [
     "SightingCreateRequest",
     "SightingUpdateRequest",
     "MatchReviewRequest",
+    "ReunionCreateRequest",
+    "SearchAreaCreateRequest",
+    "TaskProgressRequest",
 ]
