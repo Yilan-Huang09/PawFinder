@@ -27,7 +27,10 @@ class BaseConfig:
         "pool_pre_ping": True,
         "pool_recycle": 1800,
     }
-    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "development-only-change-me")
+    JWT_SECRET_KEY = os.getenv(
+        "JWT_SECRET_KEY",
+        "development-only-change-this-secret-before-deployment",
+    )
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=2)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=14)
     MAX_CONTENT_LENGTH = int(os.getenv("MAX_CONTENT_LENGTH", str(10 * 1024 * 1024)))

@@ -18,3 +18,10 @@ def health_check():
             "message": "PawFinder API is healthy",
         }
     )
+
+
+from .auth import auth_bp  # noqa: E402
+from .users import users_bp  # noqa: E402
+
+api_v1.register_blueprint(auth_bp)
+api_v1.register_blueprint(users_bp)

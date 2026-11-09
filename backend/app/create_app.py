@@ -10,6 +10,7 @@ from .api import api_v1
 from .api.errors import register_error_handlers
 from .config import CONFIGS
 from .extensions import cors, db, jwt
+from .security import register_jwt_handlers
 
 
 def create_app(
@@ -31,6 +32,7 @@ def create_app(
 
     db.init_app(app)
     jwt.init_app(app)
+    register_jwt_handlers(app)
     cors.init_app(
         app,
         resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
