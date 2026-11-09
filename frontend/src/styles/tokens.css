@@ -1,0 +1,47 @@
+:root {
+  --pf-color-primary: #e86f47;
+  --pf-color-primary-hover: #d75d38;
+  --pf-color-primary-dark: #b9482c;
+  --pf-color-coral-soft: #ffd9ca;
+  --pf-color-cream: #fff0dc;
+  --pf-color-background: #fffaf4;
+  --pf-color-surface: #ffffff;
+  --pf-color-surface-warm: #fff7ed;
+  --pf-color-sage: #70927a;
+  --pf-color-sage-dark: #4f715c;
+  --pf-color-sage-soft: #dfece4;
+  --pf-color-text: #43332d;
+  --pf-color-text-secondary: #7e685e;
+  --pf-color-text-tertiary: #a1887d;
+  --pf-color-border: #efdfd5;
+  --pf-color-danger: #c94a43;
+  --pf-color-success: #4f8a66;
+
+  --pf-font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
+    "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  --pf-radius-sm: 8px;
+  --pf-radius-md: 14px;
+  --pf-radius-lg: 22px;
+  --pf-radius-pill: 999px;
+  --pf-shadow-sm: 0 4px 18px rgb(100 65 48 / 8%);
+  --pf-shadow-md: 0 16px 42px rgb(100 65 48 / 12%);
+  --pf-shadow-focus: 0 0 0 3px rgb(232 111 71 / 20%);
+  --pf-content-width: 1180px;
+  --pf-header-height: 68px;
+
+  --el-color-primary: var(--pf-color-primary);
+  --el-color-primary-light-3: #ef9475;
+  --el-color-primary-light-5: #f4b7a1;
+  --el-color-primary-light-7: #f9d7ca;
+  --el-color-primary-light-8: #fbe5dd;
+  --el-color-primary-light-9: #fdf2ee;
+  --el-color-primary-dark-2: var(--pf-color-primary-dark);
+  --el-border-radius-base: var(--pf-radius-sm);
+  --el-border-color: var(--pf-color-border);
+  --el-text-color-primary: var(--pf-color-text);
+  --el-text-color-regular: var(--pf-color-text-secondary);
+  --el-bg-color-page: var(--pf-color-background);
+  --el-font-family: var(--pf-font-sans);
+}
