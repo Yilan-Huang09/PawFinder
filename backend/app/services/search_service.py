@@ -7,6 +7,7 @@ from sqlalchemy import update
 from ..api.errors import APIError
 from ..extensions import db
 from ..models.search import SearchTask
+from .notification_service import add_task_status_notification
 
 
 def claim_task(task_id: int, volunteer_id: int) -> SearchTask:
@@ -35,8 +36,11 @@ def claim_task(task_id: int, volunteer_id: int) -> SearchTask:
     if result.rowcount != 1:
         db.session.rollback()
         raise APIError("TASK_ALREADY_CLAIMED", "该搜寻区域已被其他志愿者认领", 409)
+    db.session.flush()
+    task = db.session.get(SearchTask, task_id)
+    add_task_status_notification(task)
     db.session.commit()
-    return db.session.get(SearchTask, task_id)
+    return task
 
 
 def update_task_progress(
@@ -62,6 +66,7 @@ def update_task_progress(
         task.started_at = task.started_at or now
         task.completed_at = now
     task.report = report
+    add_task_status_notification(task)
     db.session.commit()
     return task
 
@@ -80,5 +85,6 @@ def release_task(task_id: int, volunteer_id: int) -> SearchTask:
     task.started_at = None
     task.completed_at = None
     task.report = None
+    add_task_status_notification(task)
     db.session.commit()
     return task

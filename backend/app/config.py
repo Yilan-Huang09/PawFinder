@@ -40,6 +40,10 @@ class BaseConfig:
     UPLOAD_FOLDER = _upload_folder()
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(",")
     USE_REUNION_PROCEDURE = True
+    AI_API_BASE_URL = os.getenv("AI_API_BASE_URL", "")
+    AI_API_KEY = os.getenv("AI_API_KEY", "")
+    AI_MODEL = os.getenv("AI_MODEL", "")
+    AI_TIMEOUT_SECONDS = float(os.getenv("AI_TIMEOUT_SECONDS", "8"))
 
 
 class DevelopmentConfig(BaseConfig):

@@ -12,6 +12,7 @@ from ..models.lost_case import LostCase
 from ..models.reunion import ReunionRecord
 from ..models.search import SearchArea, SearchTask
 from ..models.user import User
+from .notification_service import add_notification
 
 
 def _validate_confirmation(lost_case: LostCase, confirmed_by: int) -> None:
@@ -46,6 +47,13 @@ def _confirm_with_orm(case_id: int, confirmed_by: int, payload: dict[str, Any]) 
             area.status = "CLOSED"
             if area.task and area.task.status != "COMPLETED":
                 area.task.status = "CANCELLED"
+        add_notification(
+            user_id=lost_case.pet.owner_id,
+            type="REUNION",
+            title="宠物已确认寻回",
+            content=f"宠物“{lost_case.pet.name}”已确认安全回家，相关搜寻任务已归档。",
+            related_case_id=case_id,
+        )
         db.session.commit()
         return record
     except APIError:
