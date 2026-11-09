@@ -23,6 +23,7 @@ coverage/
 # Runtime data
 backend/uploads/*
 !backend/uploads/.gitkeep
+.tmp/
 *.log
 
 # Editors and OS
