@@ -6,6 +6,8 @@ from .auth import (
     UpdateUserStatusRequest,
 )
 from .pet import PetCreateRequest, PetUpdateRequest
+from .case import CaseCreateRequest, CaseUpdateRequest
+from .sighting import SightingCreateRequest, SightingUpdateRequest
 
 __all__ = [
     "ChangePasswordRequest",
@@ -15,4 +17,8 @@ __all__ = [
     "UpdateUserStatusRequest",
     "PetCreateRequest",
     "PetUpdateRequest",
+    "CaseCreateRequest",
+    "CaseUpdateRequest",
+    "SightingCreateRequest",
+    "SightingUpdateRequest",
 ]
