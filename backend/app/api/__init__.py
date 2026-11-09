@@ -21,7 +21,9 @@ def health_check():
 
 
 from .auth import auth_bp  # noqa: E402
+from .pets import pets_bp  # noqa: E402
 from .users import users_bp  # noqa: E402
 
 api_v1.register_blueprint(auth_bp)
+api_v1.register_blueprint(pets_bp)
 api_v1.register_blueprint(users_bp)

@@ -3,13 +3,11 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import BigInteger, DateTime, Integer, String, func
+from sqlalchemy import DateTime, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from ..extensions import db
-
-
-ID_TYPE = BigInteger().with_variant(Integer, "sqlite")
+from .types import ID_TYPE
 
 
 class User(db.Model):

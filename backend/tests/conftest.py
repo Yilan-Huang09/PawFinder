@@ -7,12 +7,14 @@ from app.extensions import db
 
 
 @pytest.fixture()
-def app():
+def app(tmp_path):
     application = create_app(
         "testing",
         {
             "SQLALCHEMY_DATABASE_URI": "sqlite+pysqlite:///:memory:",
             "JWT_SECRET_KEY": "test-only-jwt-secret-at-least-32-bytes-long",
+            "UPLOAD_FOLDER": str(tmp_path / "uploads"),
+            "MAX_PHOTO_BYTES": 1024 * 1024,
         },
     )
     with application.app_context():
