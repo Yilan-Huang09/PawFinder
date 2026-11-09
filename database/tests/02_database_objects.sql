@@ -60,6 +60,11 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Object test failed: identical points must have zero distance';
   END IF;
 
+  SET distance_value = fn_distance_km(30.2741000, 120.1551000, 30.2841000, 120.1651000);
+  IF ABS(distance_value - 1.470) > 0.050 THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Object test failed: non-zero distance is outside tolerance';
+  END IF;
+
   START TRANSACTION;
 
   INSERT INTO users (username, password_hash, phone)
