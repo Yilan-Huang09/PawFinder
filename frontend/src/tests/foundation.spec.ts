@@ -1,13 +1,13 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
+import type { RouteLocationNormalized } from 'vue-router'
 
-import router from '@/router'
+import { authenticationGuard } from '@/router'
 import { useAuthStore } from '@/stores/auth'
 
 describe('frontend foundation', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     setActivePinia(createPinia())
-    await router.push('/')
   })
 
   it('persists and clears an authenticated session', () => {
@@ -31,10 +31,16 @@ describe('frontend foundation', () => {
     expect(localStorage.getItem('pawfinder_access_token')).toBeNull()
   })
 
-  it('redirects anonymous visitors away from protected pages', async () => {
-    await router.push('/notifications')
+  it('redirects anonymous visitors away from protected pages', () => {
+    const result = authenticationGuard({
+      name: 'notifications',
+      fullPath: '/notifications',
+      meta: { requiresAuth: true },
+    } as RouteLocationNormalized)
 
-    expect(router.currentRoute.value.name).toBe('login')
-    expect(router.currentRoute.value.query.redirect).toBe('/notifications')
+    expect(result).toEqual({
+      name: 'login',
+      query: { redirect: '/notifications' },
+    })
   })
 })

@@ -11,9 +11,16 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppPagination: typeof import('./components/common/AppPagination.vue')['default']
+    AuthShell: typeof import('./components/auth/AuthShell.vue')['default']
+    CaseCard: typeof import('./components/cases/CaseCard.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
+    ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
+    ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
+    EmptyState: typeof import('./components/common/EmptyState.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

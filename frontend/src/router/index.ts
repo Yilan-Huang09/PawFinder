@@ -1,10 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  type RouteLocationNormalized,
+} from 'vue-router'
 
 import { useAuthStore } from '@/stores/auth'
 
 const AppLayout = () => import('@/layouts/AppLayout.vue')
 const PublicLayout = () => import('@/layouts/PublicLayout.vue')
 const PlaceholderView = () => import('@/views/PlaceholderView.vue')
+const HomeView = () => import('@/views/HomeView.vue')
+const CasesView = () => import('@/views/CasesView.vue')
+const LoginView = () => import('@/views/LoginView.vue')
+const RegisterView = () => import('@/views/RegisterView.vue')
 
 
 declare module 'vue-router' {
@@ -28,7 +36,7 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          component: PlaceholderView,
+          component: HomeView,
           meta: {
             eyebrow: '让每一次看见，都成为回家的线索',
             title: '一起，把走失的它带回家',
@@ -38,7 +46,7 @@ const router = createRouter({
         {
           path: 'cases',
           name: 'cases',
-          component: PlaceholderView,
+          component: CasesView,
           meta: {
             eyebrow: '公开寻宠信息',
             title: '附近正在寻找',
@@ -48,7 +56,7 @@ const router = createRouter({
         {
           path: 'login',
           name: 'login',
-          component: PlaceholderView,
+          component: LoginView,
           meta: {
             eyebrow: '欢迎回来',
             title: '登录 PawFinder',
@@ -58,11 +66,21 @@ const router = createRouter({
         {
           path: 'register',
           name: 'register',
-          component: PlaceholderView,
+          component: RegisterView,
           meta: {
             eyebrow: '加入协作网络',
             title: '创建 PawFinder 账号',
             description: '发布走失、提供线索或参与附近搜寻。',
+          },
+        },
+        {
+          path: 'cases/:caseId(\\d+)',
+          name: 'case-detail',
+          component: PlaceholderView,
+          meta: {
+            eyebrow: '走失事件',
+            title: '事件详情',
+            description: '宠物资料、候选线索与协作搜寻信息。',
           },
         },
       ],
@@ -92,6 +110,28 @@ const router = createRouter({
             eyebrow: '志愿协作',
             title: '附近搜寻任务',
             description: '认领区域、更新进度并提交搜寻反馈。',
+          },
+        },
+        {
+          path: '/cases/new',
+          name: 'case-create',
+          component: PlaceholderView,
+          meta: {
+            requiresAuth: true,
+            eyebrow: '发布走失',
+            title: '建立寻宠事件',
+            description: '填写最后出现时间、地点和宠物特征。',
+          },
+        },
+        {
+          path: '/sightings/new',
+          name: 'sighting-create',
+          component: PlaceholderView,
+          meta: {
+            requiresAuth: true,
+            eyebrow: '提交目击',
+            title: '分享你看到的线索',
+            description: '独立记录时间、位置和外观信息。',
           },
         },
         {
@@ -137,7 +177,7 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to) => {
+export function authenticationGuard(to: RouteLocationNormalized) {
   const auth = useAuthStore()
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
     return { name: 'login', query: { redirect: to.fullPath } }
@@ -149,6 +189,8 @@ router.beforeEach((to) => {
     return { name: 'pets' }
   }
   return true
-})
+}
+
+router.beforeEach(authenticationGuard)
 
 export default router

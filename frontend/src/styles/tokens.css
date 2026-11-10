@@ -45,3 +45,15 @@
   --el-bg-color-page: var(--pf-color-background);
   --el-font-family: var(--pf-font-sans);
 }
+
+/* Element Plus component styles are lazy-loaded with route chunks. The more
+   specific selector keeps PawFinder's theme stable regardless of load order. */
+html:root {
+  --el-color-primary: var(--pf-color-primary);
+  --el-color-primary-light-3: #ef9475;
+  --el-color-primary-light-5: #f4b7a1;
+  --el-color-primary-light-7: #f9d7ca;
+  --el-color-primary-light-8: #fbe5dd;
+  --el-color-primary-light-9: #fdf2ee;
+  --el-color-primary-dark-2: var(--pf-color-primary-dark);
+}

@@ -14,7 +14,7 @@ export interface AuthUser {
 
 export interface AuthSession {
   accessToken: string
-  refreshToken: string
+  refreshToken?: string | null
   user: AuthUser
 }
 
@@ -47,10 +47,14 @@ export const useAuthStore = defineStore('auth', () => {
 
   function setSession(session: AuthSession) {
     accessToken.value = session.accessToken
-    refreshToken.value = session.refreshToken
+    refreshToken.value = session.refreshToken || null
     user.value = session.user
     localStorage.setItem(ACCESS_TOKEN_KEY, session.accessToken)
-    localStorage.setItem(REFRESH_TOKEN_KEY, session.refreshToken)
+    if (session.refreshToken) {
+      localStorage.setItem(REFRESH_TOKEN_KEY, session.refreshToken)
+    } else {
+      localStorage.removeItem(REFRESH_TOKEN_KEY)
+    }
     localStorage.setItem(USER_KEY, JSON.stringify(session.user))
   }
 
