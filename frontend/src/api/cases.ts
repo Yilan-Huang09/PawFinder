@@ -1,5 +1,5 @@
 import apiClient, { type ApiEnvelope } from './client'
-import type { LostCase, PaginationMeta } from '@/types/domain'
+import type { LostCase, PaginationMeta, Sighting } from '@/types/domain'
 
 export interface CaseQuery {
   page?: number
@@ -19,4 +19,16 @@ export async function fetchCases(
     items: response.data.data,
     meta: response.data.meta as unknown as PaginationMeta,
   }
+}
+
+export async function fetchCase(caseId: number): Promise<LostCase> {
+  const response = await apiClient.get<ApiEnvelope<LostCase>>(`/cases/${caseId}`)
+  return response.data.data
+}
+
+export async function fetchSightings(species?: string): Promise<Sighting[]> {
+  const response = await apiClient.get<ApiEnvelope<Sighting[]>>('/sightings', {
+    params: { species, page: 1, per_page: 100 },
+  })
+  return response.data.data
 }

@@ -17,6 +17,9 @@ const PetsView = () => import('@/views/PetsView.vue')
 const PetEditView = () => import('@/views/PetEditView.vue')
 const CaseCreateView = () => import('@/views/CaseCreateView.vue')
 const SightingCreateView = () => import('@/views/SightingCreateView.vue')
+const CaseDetailView = () => import('@/views/CaseDetailView.vue')
+const MatchesView = () => import('@/views/MatchesView.vue')
+const SearchMapView = () => import('@/views/SearchMapView.vue')
 
 
 declare module 'vue-router' {
@@ -80,7 +83,7 @@ const router = createRouter({
         {
           path: 'cases/:caseId(\\d+)',
           name: 'case-detail',
-          component: PlaceholderView,
+          component: CaseDetailView,
           meta: {
             eyebrow: '走失事件',
             title: '事件详情',
@@ -120,12 +123,34 @@ const router = createRouter({
         {
           path: '/search-tasks',
           name: 'search-tasks',
-          component: PlaceholderView,
+          component: SearchMapView,
           meta: {
             requiresAuth: true,
             eyebrow: '志愿协作',
             title: '附近搜寻任务',
             description: '认领区域、更新进度并提交搜寻反馈。',
+          },
+        },
+        {
+          path: '/cases/:caseId(\\d+)/matches',
+          name: 'case-matches',
+          component: MatchesView,
+          meta: {
+            requiresAuth: true,
+            eyebrow: '智能匹配',
+            title: '候选线索审核',
+            description: '查看可解释分数并核实线索。',
+          },
+        },
+        {
+          path: '/cases/:caseId(\\d+)/search',
+          name: 'case-search',
+          component: SearchMapView,
+          meta: {
+            requiresAuth: true,
+            eyebrow: '协作搜寻',
+            title: '区域与任务',
+            description: '规划区域、认领任务并记录进展。',
           },
         },
         {

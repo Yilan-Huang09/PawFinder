@@ -14,6 +14,7 @@ declare module 'vue' {
     AppPagination: typeof import('./components/common/AppPagination.vue')['default']
     AuthShell: typeof import('./components/auth/AuthShell.vue')['default']
     CaseCard: typeof import('./components/cases/CaseCard.vue')['default']
+    CaseMap: typeof import('./components/maps/CaseMap.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElIcon: typeof import('element-plus/es')['ElIcon']
@@ -22,8 +23,11 @@ declare module 'vue' {
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     EmptyState: typeof import('./components/common/EmptyState.vue')['default']
     LocationFields: typeof import('./components/forms/LocationFields.vue')['default']
+    MatchScore: typeof import('./components/matches/MatchScore.vue')['default']
     PhotoUploader: typeof import('./components/uploads/PhotoUploader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchTaskPanel: typeof import('./components/search/SearchTaskPanel.vue')['default']
+    SightingTimeline: typeof import('./components/timeline/SightingTimeline.vue')['default']
   }
 }

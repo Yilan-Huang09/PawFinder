@@ -60,6 +60,81 @@ export interface Sighting {
   status: string
   created_at: string
   updated_at: string
+  photos?: Array<{
+    photo_id: number
+    sighting_id: number
+    photo_url: string
+    sort_order: number
+  }>
+}
+
+export type MatchReviewStatus = 'PENDING' | 'CONFIRMED' | 'REJECTED'
+
+export interface CaseMatch {
+  match_id: number
+  case_id: number
+  sighting_id: number
+  appearance_score: number
+  distance_score: number
+  time_score: number
+  total_score: number
+  distance_km: number
+  match_reason: string
+  algorithm_version: string
+  review_status: MatchReviewStatus
+  reviewed_by: number | null
+  generated_at: string
+  reviewed_at: string | null
+  sighting: Sighting
+}
+
+export type SearchTaskStatus =
+  | 'AVAILABLE'
+  | 'CLAIMED'
+  | 'IN_PROGRESS'
+  | 'COMPLETED'
+  | 'CANCELLED'
+
+export interface SearchArea {
+  area_id: number
+  case_id: number
+  created_by: number
+  area_name: string
+  center_latitude: number
+  center_longitude: number
+  radius_meters: number
+  description?: string | null
+  status: string
+  created_at?: string
+  updated_at?: string
+  task?: SearchTask | null
+}
+
+export interface SearchTask {
+  task_id: number
+  area_id: number
+  volunteer_id: number | null
+  status: SearchTaskStatus
+  accepted_at: string | null
+  started_at: string | null
+  completed_at: string | null
+  report: string | null
+  updated_at: string
+  area?: SearchArea
+}
+
+export interface ReunionRecord {
+  reunion_id: number
+  case_id: number
+  finder_id: number | null
+  confirmed_by: number
+  reunion_time: string
+  latitude: number | null
+  longitude: number | null
+  address: string
+  method: string | null
+  note: string | null
+  created_at: string
 }
 
 export interface LostCase {

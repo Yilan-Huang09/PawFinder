@@ -16,6 +16,13 @@ const navigation = [
   { label: '志愿行动', to: '/search-tasks' },
 ]
 
+function isCurrentNavigation(to: string) {
+  if (to === '/') return route.path === '/'
+  if (to === '/cases') return route.path.startsWith('/cases') && route.query.view !== 'map'
+  if (to.includes('view=map')) return route.path === '/cases' && route.query.view === 'map'
+  return route.path === to
+}
+
 watch(
   () => route.fullPath,
   () => {
@@ -42,7 +49,7 @@ watch(
         </RouterLink>
 
         <nav class="public-nav" aria-label="主要导航">
-          <RouterLink v-for="item in navigation" :key="item.label" :to="item.to">
+          <RouterLink v-for="item in navigation" :key="item.label" :to="item.to" :class="{ 'nav-current': isCurrentNavigation(item.to) }">
             {{ item.label }}
           </RouterLink>
         </nav>
@@ -217,7 +224,7 @@ watch(
 }
 
 .public-nav a:hover,
-.public-nav a.router-link-active,
+.public-nav a.nav-current,
 .header-text-link:hover {
   color: var(--pf-color-primary-dark);
 }
@@ -236,7 +243,7 @@ watch(
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.public-nav a.router-link-active::after {
+.public-nav a.nav-current::after {
   opacity: 1;
   transform: scaleX(1);
 }
