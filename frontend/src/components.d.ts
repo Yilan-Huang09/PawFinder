@@ -21,6 +21,8 @@ declare module 'vue' {
     ElSkeleton: typeof import('element-plus/es')['ElSkeleton']
     ElSkeletonItem: typeof import('element-plus/es')['ElSkeletonItem']
     EmptyState: typeof import('./components/common/EmptyState.vue')['default']
+    LocationFields: typeof import('./components/forms/LocationFields.vue')['default']
+    PhotoUploader: typeof import('./components/uploads/PhotoUploader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

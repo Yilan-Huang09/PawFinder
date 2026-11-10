@@ -46,5 +46,5 @@ export function formatRelativeTime(value: string): string {
 export function resolveUploadUrl(path?: string | null): string | null {
   if (!path) return null
   if (/^https?:\/\//i.test(path)) return path
-  return `/uploads/${path.replace(/^\/+/, '')}`
+  return `/api/v1/uploads/${path.replace(/^\/+/, '')}`
 }

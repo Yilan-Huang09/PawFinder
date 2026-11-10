@@ -30,3 +30,13 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
   value: () => undefined,
 })
+
+Object.defineProperty(URL, 'createObjectURL', {
+  writable: true,
+  value: () => 'blob:pawfinder-test-preview',
+})
+
+Object.defineProperty(URL, 'revokeObjectURL', {
+  writable: true,
+  value: () => undefined,
+})

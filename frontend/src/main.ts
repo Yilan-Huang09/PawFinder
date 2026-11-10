@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 
 import '@/styles/tokens.css'
 import '@/styles/global.css'
+import '@/styles/forms.css'
 
 import App from './App.vue'
 import router from './router'

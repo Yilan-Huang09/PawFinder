@@ -13,6 +13,10 @@ const HomeView = () => import('@/views/HomeView.vue')
 const CasesView = () => import('@/views/CasesView.vue')
 const LoginView = () => import('@/views/LoginView.vue')
 const RegisterView = () => import('@/views/RegisterView.vue')
+const PetsView = () => import('@/views/PetsView.vue')
+const PetEditView = () => import('@/views/PetEditView.vue')
+const CaseCreateView = () => import('@/views/CaseCreateView.vue')
+const SightingCreateView = () => import('@/views/SightingCreateView.vue')
 
 
 declare module 'vue-router' {
@@ -93,13 +97,25 @@ const router = createRouter({
         {
           path: '/pets',
           name: 'pets',
-          component: PlaceholderView,
+          component: PetsView,
           meta: {
             requiresAuth: true,
             eyebrow: '个人工作台',
             title: '我的宠物档案',
             description: '维护宠物特征、照片和当前状态。',
           },
+        },
+        {
+          path: '/pets/new',
+          name: 'pet-create',
+          component: PetEditView,
+          meta: { requiresAuth: true, title: '创建宠物档案' },
+        },
+        {
+          path: '/pets/:petId(\\d+)/edit',
+          name: 'pet-edit',
+          component: PetEditView,
+          meta: { requiresAuth: true, title: '编辑宠物档案' },
         },
         {
           path: '/search-tasks',
@@ -115,7 +131,7 @@ const router = createRouter({
         {
           path: '/cases/new',
           name: 'case-create',
-          component: PlaceholderView,
+          component: CaseCreateView,
           meta: {
             requiresAuth: true,
             eyebrow: '发布走失',
@@ -126,7 +142,7 @@ const router = createRouter({
         {
           path: '/sightings/new',
           name: 'sighting-create',
-          component: PlaceholderView,
+          component: SightingCreateView,
           meta: {
             requiresAuth: true,
             eyebrow: '提交目击',

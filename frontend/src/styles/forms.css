@@ -1,0 +1,238 @@
+.workflow-page {
+  min-height: calc(100vh - 68px);
+  padding: 42px 0 80px;
+  background:
+    radial-gradient(circle at 92% 5%, rgb(255 217 202 / 52%), transparent 20rem),
+    var(--pf-color-background);
+}
+
+.workflow-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.workflow-heading__eyebrow {
+  color: var(--pf-color-primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.workflow-heading h1 {
+  margin: 4px 0 5px;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.workflow-heading p {
+  margin: 0;
+  color: var(--pf-color-text-secondary);
+  font-size: 12px;
+}
+
+.workflow-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  align-items: start;
+  gap: 20px;
+}
+
+.workflow-form {
+  overflow: hidden;
+}
+
+.form-section {
+  padding: 25px 28px;
+  border-bottom: 1px solid #f1e5de;
+}
+
+.form-section:last-child {
+  border-bottom: 0;
+}
+
+.form-section__heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 19px;
+}
+
+.form-section__index {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--pf-color-primary-dark);
+  background: #ffe4da;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.form-section__heading h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.form-section__heading p {
+  margin: 2px 0 0;
+  color: var(--pf-color-text-tertiary);
+  font-size: 10px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.field-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.field-span-2 {
+  grid-column: 1 / -1;
+}
+
+.app-form-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  color: var(--pf-color-text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.app-form-field > span b {
+  color: var(--pf-color-primary);
+}
+
+.app-form-control {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--pf-color-border);
+  border-radius: 9px;
+  outline: 0;
+  color: var(--pf-color-text);
+  background: #ffffff;
+  font-size: 12px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+textarea.app-form-control {
+  height: auto;
+  min-height: 112px;
+  padding-top: 11px;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.app-form-control:focus {
+  border-color: var(--pf-color-primary);
+  box-shadow: var(--pf-shadow-focus);
+}
+
+.workflow-form__error {
+  margin: 0;
+  padding: 10px 13px;
+  border: 1px solid #f0c7c4;
+  border-radius: 8px;
+  color: var(--pf-color-danger);
+  background: #fff5f4;
+  font-size: 11px;
+}
+
+.workflow-form__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px 28px;
+  background: var(--pf-color-surface-warm);
+}
+
+.workflow-aside {
+  display: grid;
+  gap: 14px;
+}
+
+.workflow-tip {
+  padding: 18px;
+}
+
+.workflow-tip h3 {
+  margin: 0 0 9px;
+  font-size: 13px;
+}
+
+.workflow-tip p,
+.workflow-tip li {
+  color: var(--pf-color-text-secondary);
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.workflow-tip p {
+  margin: 0;
+}
+
+.workflow-tip ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 17px;
+}
+
+@media (max-width: 880px) {
+  .workflow-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-aside {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .workflow-page {
+    padding-top: 28px;
+  }
+
+  .workflow-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-section {
+    padding: 22px 18px;
+  }
+
+  .field-grid,
+  .field-grid--three,
+  .workflow-aside {
+    grid-template-columns: 1fr;
+  }
+
+  .field-span-2 {
+    grid-column: auto;
+  }
+
+  .workflow-form__actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    padding: 18px;
+  }
+
+  .workflow-form__actions .el-button {
+    width: 100%;
+    margin-left: 0;
+  }
+}

@@ -72,6 +72,26 @@ def test_first_photo_becomes_cover_and_cover_can_change(
     assert [photo["is_cover"] for photo in photos] == [False, True]
 
 
+def test_uploaded_photo_can_be_read_from_safe_public_media_route(
+    client, user_factory, login
+):
+    user_factory("readable_photo_owner")
+    token = login("readable_photo_owner")
+    pet_id = _create_pet(client, token)
+    uploaded = client.post(
+        f"/api/v1/pets/{pet_id}/photos",
+        data={"photo": _jpeg("readable.jpg")},
+        headers=_headers(token),
+        content_type="multipart/form-data",
+    ).get_json()["data"]
+
+    response = client.get(f"/api/v1/uploads/{uploaded['photo_url']}")
+
+    assert response.status_code == 200
+    assert response.data.startswith(b"\xff\xd8\xff")
+    assert response.mimetype == "image/jpeg"
+
+
 def test_upload_rejects_spoofed_or_unsupported_file(client, user_factory, login):
     user_factory("unsafe_upload_owner")
     token = login("unsafe_upload_owner")

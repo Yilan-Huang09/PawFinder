@@ -30,6 +30,36 @@ export interface PetSummary {
   cover_photo_url?: string | null
   created_at?: string
   updated_at?: string
+  photos?: PetPhoto[]
+}
+
+export interface PetPhoto {
+  photo_id: number
+  pet_id: number
+  photo_url: string
+  is_cover: boolean
+  sort_order: number
+}
+
+export interface Sighting {
+  sighting_id: number
+  reporter_id: number
+  species: string
+  breed_guess?: string | null
+  primary_color: string
+  secondary_color?: string | null
+  gender_guess: string
+  size_guess: string
+  seen_time: string
+  latitude: number
+  longitude: number
+  address: string
+  direction?: string | null
+  confidence: number
+  description?: string | null
+  status: string
+  created_at: string
+  updated_at: string
 }
 
 export interface LostCase {
