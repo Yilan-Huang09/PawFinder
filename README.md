@@ -1,44 +1,51 @@
 # PawFinder 寻爪计划
 
-PawFinder 是一个面向宠物主人、目击者和志愿者的协同寻宠数据库课程设计项目。系统通过结构化外观信息、时间和地理距离生成可解释的候选线索，并支持地图搜寻任务与事务化寻回确认。
+PawFinder 是一个基于时空线索匹配的宠物走失协同搜寻系统，也是可完整运行的数据库课程设计。系统连接主人、目击者与志愿者，通过结构化外观、时间和距离生成可解释匹配，并用事务保证任务认领与寻回的一致性。
 
-## 技术栈
+## 已实现功能
 
-- MySQL 8.0.16+（推荐 8.0.36 或更新的 8.0 版本）
-- Python 3.11+
-- Flask 3、SQLAlchemy 2、Pydantic 2
-- Node.js 20+、Vue 3、Vite、TypeScript
+- 宠物档案、照片、走失事件与独立目击线索
+- 外观 45% + 距离 30% + 时间 25% 的 `rule-v1` 可解释匹配
+- 搜寻区域、原子认领、进度、释放与完成反馈
+- `sp_confirm_reunion` 一次完成寻回、事件关闭和任务归档
+- 通知、个人中心、管理员统计和内容治理
+- 无地图密钥坐标列表与本地 AI 模板降级
 
-当前开发环境已检测到 Python 3.11.9、Node.js 24.12.0、npm 11.19.1 和 MySQL 客户端 8.0.11。MySQL 8.0.11 不执行 `CHECK` 约束，因此本项目会同时使用数据库触发器与后端校验保证兼容；正式演示仍推荐升级到 MySQL 8.0.16 以上。
+## 快速开始
 
-## 项目状态
-
-项目正在按以下设计与实施计划开发：
-
-- [系统设计](docs/superpowers/specs/2026-11-09-pawfinder-design.md)
-- [实施计划](docs/superpowers/plans/2026-11-09-pawfinder-implementation.md)
-
-## 目录
-
-```text
-backend/    Flask API 与测试
-frontend/   Vue 3 前端
-database/   MySQL 建表、对象、测试数据与验证 SQL
-docs/       需求、设计、测试与答辩材料
-```
-
-## 环境配置
-
-复制 `.env.example` 为 `.env`，填写本机数据库账号和密钥。不要把 `.env` 提交到 Git。
+要求 MySQL 8.0.16+、Python 3.11+、Node.js 20+。复制 `.env.example` 为 `.env` 并修改连接和密钥，然后运行：
 
 ```powershell
-Copy-Item .env.example .env
+./scripts/setup.ps1 -Seed
+./scripts/start-dev.ps1
 ```
 
-数据库、后端和前端的完整安装与启动步骤会随对应模块完成后补充到本文件。
+`-Seed` 只应对空数据库使用；默认初始化不会删除已有数据。访问 `http://127.0.0.1:5173`，API 健康检查为 `http://127.0.0.1:5000/api/v1/health`。
 
-## 安全说明
+## 演示账号
 
-- 仓库不包含真实数据库密码、JWT 密钥、地图密钥或模型密钥。
-- 地图和大模型未配置时，系统使用坐标列表与本地文本模板降级运行。
-- 演示账号只用于本地课程环境。
+种子账号统一密码为 `PawFinder123!`。主人账号 `linyu`，管理员账号 `admin`；仅用于本地课程演示。
+
+## 测试
+
+```powershell
+./.venv/Scripts/python.exe -m pytest backend/tests -q
+npm test --prefix frontend
+npm run build --prefix frontend
+npm run test:e2e
+```
+
+系统含 11 张第三范式业务表、3 个视图、距离函数、完整性触发器和寻回事务存储过程。建库顺序为 `schema.sql` → `objects.sql` → `seed.sql`。
+
+## 文档
+
+- [需求说明](docs/requirements.md)
+- [数据字典](docs/data-dictionary.md)
+- [E-R 图](docs/er-diagram.drawio)
+- [报告提纲](docs/report-outline.md)
+- [答辩提纲](docs/presentation-outline.md)
+- [演示脚本](docs/demo-script.md)
+- [录屏清单](docs/video-checklist.md)
+- [测试用例](docs/test-cases.md)
+
+仓库不提交 `.env`、真实密钥、上传文件或构建产物。公开联系方式自动脱敏，资源所有权和管理员权限均由后端校验。
