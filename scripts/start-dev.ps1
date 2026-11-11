@@ -1,3 +1,4 @@
+#requires -Version 5.1
 [CmdletBinding()]
 param(
   [string]$DatabaseUrl = '',
@@ -7,8 +8,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
-if (-not (Test-Path (Join-Path $projectRoot '.venv\Scripts\python.exe'))) { throw '缺少 .venv，请先运行 scripts/setup.ps1。' }
-if ($ApiPort -ne 5000) { throw '当前 backend/run.py 固定使用 5000 端口，请保持 ApiPort=5000。' }
+if (-not (Test-Path (Join-Path $projectRoot '.venv\Scripts\python.exe'))) { throw 'Missing .venv. Run scripts/setup.ps1 first.' }
+if ($ApiPort -ne 5000) { throw 'backend/run.py currently uses port 5000. Keep ApiPort set to 5000.' }
 
 $previousDatabaseUrl = $env:DATABASE_URL
 if ($DatabaseUrl) { $env:DATABASE_URL = $DatabaseUrl }
@@ -21,4 +22,4 @@ try {
 
 Write-Host "API: http://127.0.0.1:$ApiPort  PID=$($api.Id)"
 Write-Host "Web: http://127.0.0.1:$WebPort  PID=$($web.Id)"
-Write-Host "停止服务：Stop-Process -Id $($api.Id),$($web.Id)"
+Write-Host "Stop services with: Stop-Process -Id $($api.Id),$($web.Id)"
