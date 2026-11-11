@@ -5,7 +5,8 @@ param(
   [int]$MySqlPort = 3306,
   [string]$MySqlUser = 'root',
   [switch]$Seed,
-  [switch]$SkipDependencies
+  [switch]$SkipDependencies,
+  [switch]$EmptyPassword
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,22 +25,24 @@ if (-not $SkipDependencies) {
   npm install
 }
 
-$securePassword = Read-Host "MySQL password for $MySqlUser (press Enter for an empty password)" -AsSecureString
-$credential = New-Object System.Net.NetworkCredential('', $securePassword)
-$plainPassword = $credential.Password
+if ($EmptyPassword) {
+  $credential = $null
+  $plainPassword = ''
+} else {
+  $securePassword = Read-Host "MySQL password for $MySqlUser (press Enter for an empty password)" -AsSecureString
+  $credential = New-Object System.Net.NetworkCredential('', $securePassword)
+  $plainPassword = $credential.Password
+}
 
 function Invoke-MySqlFile([string]$path) {
   Write-Host "Running $path"
   $startInfo = New-Object System.Diagnostics.ProcessStartInfo
   $startInfo.FileName = 'mysql'
-  $startInfo.Arguments = "--host=$MySqlHost --port=$MySqlPort --user=$MySqlUser --default-character-set=utf8mb4"
-  $startInfo.RedirectStandardInput = $true
+  $startInfo.Arguments = "--host=$MySqlHost --port=$MySqlPort --user=$MySqlUser --default-character-set=utf8mb4 --execute=`"source $path`""
+  $startInfo.WorkingDirectory = $projectRoot
   $startInfo.UseShellExecute = $false
-  $startInfo.StandardInputEncoding = New-Object System.Text.UTF8Encoding($false)
   if ($plainPassword) { $startInfo.EnvironmentVariables['MYSQL_PWD'] = $plainPassword }
   $process = [System.Diagnostics.Process]::Start($startInfo)
-  $process.StandardInput.Write((Get-Content -Raw -Encoding UTF8 $path))
-  $process.StandardInput.Close()
   $process.WaitForExit()
   if ($process.ExitCode -ne 0) { throw "MySQL failed while running $path" }
 }
