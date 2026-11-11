@@ -137,6 +137,29 @@ export interface ReunionRecord {
   created_at: string
 }
 
+export interface AppNotification {
+  notification_id: number
+  user_id: number
+  type: string
+  title: string
+  content: string
+  related_case_id: number | null
+  related_match_id: number | null
+  related_task_id: number | null
+  is_read: boolean
+  created_at: string
+  read_at: string | null
+}
+
+export interface AdminStatistics {
+  users: { total: number; active: number; disabled: number }
+  cases: { total: number; searching: number; reunited: number; closed: number }
+  sightings: { total: number; active: number; hidden: number; invalid: number }
+  matches: { total: number; pending: number; high_score: number }
+  tasks: { total: number; available: number; in_progress: number; completed: number }
+  reunions: { total: number }
+}
+
 export interface LostCase {
   case_id: number
   pet_id: number

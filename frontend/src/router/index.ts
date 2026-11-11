@@ -8,7 +8,6 @@ import { useAuthStore } from '@/stores/auth'
 
 const AppLayout = () => import('@/layouts/AppLayout.vue')
 const PublicLayout = () => import('@/layouts/PublicLayout.vue')
-const PlaceholderView = () => import('@/views/PlaceholderView.vue')
 const HomeView = () => import('@/views/HomeView.vue')
 const CasesView = () => import('@/views/CasesView.vue')
 const LoginView = () => import('@/views/LoginView.vue')
@@ -20,6 +19,9 @@ const SightingCreateView = () => import('@/views/SightingCreateView.vue')
 const CaseDetailView = () => import('@/views/CaseDetailView.vue')
 const MatchesView = () => import('@/views/MatchesView.vue')
 const SearchMapView = () => import('@/views/SearchMapView.vue')
+const ProfileView = () => import('@/views/ProfileView.vue')
+const NotificationsView = () => import('@/views/NotificationsView.vue')
+const AdminView = () => import('@/views/AdminView.vue')
 
 
 declare module 'vue-router' {
@@ -178,7 +180,7 @@ const router = createRouter({
         {
           path: '/notifications',
           name: 'notifications',
-          component: PlaceholderView,
+          component: NotificationsView,
           meta: {
             requiresAuth: true,
             eyebrow: '消息中心',
@@ -189,7 +191,7 @@ const router = createRouter({
         {
           path: '/profile',
           name: 'profile',
-          component: PlaceholderView,
+          component: ProfileView,
           meta: {
             requiresAuth: true,
             eyebrow: '账号设置',
@@ -200,7 +202,7 @@ const router = createRouter({
         {
           path: '/admin',
           name: 'admin',
-          component: PlaceholderView,
+          component: AdminView,
           meta: {
             requiresAuth: true,
             requiresAdmin: true,

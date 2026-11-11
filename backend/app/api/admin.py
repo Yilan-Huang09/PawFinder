@@ -24,6 +24,37 @@ def _status_count(model, status: str) -> int:
     return model.query.filter_by(status=status).count()
 
 
+@admin_bp.get("/admin/users")
+@admin_required
+def list_admin_users():
+    users = User.query.order_by(User.created_at.desc(), User.user_id.desc()).all()
+    return jsonify({"data": [user.to_dict() for user in users], "message": "用户列表获取成功"})
+
+
+@admin_bp.get("/admin/content/cases")
+@admin_required
+def list_admin_cases():
+    cases = LostCase.query.order_by(LostCase.created_at.desc(), LostCase.case_id.desc()).all()
+    return jsonify(
+        {
+            "data": [lost_case.to_dict(reveal_contact=True) for lost_case in cases],
+            "message": "事件列表获取成功",
+        }
+    )
+
+
+@admin_bp.get("/admin/content/sightings")
+@admin_required
+def list_admin_sightings():
+    sightings = Sighting.query.order_by(Sighting.created_at.desc(), Sighting.sighting_id.desc()).all()
+    return jsonify(
+        {
+            "data": [sighting.to_dict() for sighting in sightings],
+            "message": "线索列表获取成功",
+        }
+    )
+
+
 @admin_bp.get("/admin/statistics")
 @admin_required
 def admin_statistics():

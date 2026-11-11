@@ -24,10 +24,12 @@ declare module 'vue' {
     EmptyState: typeof import('./components/common/EmptyState.vue')['default']
     LocationFields: typeof import('./components/forms/LocationFields.vue')['default']
     MatchScore: typeof import('./components/matches/MatchScore.vue')['default']
+    NotificationList: typeof import('./components/notifications/NotificationList.vue')['default']
     PhotoUploader: typeof import('./components/uploads/PhotoUploader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchTaskPanel: typeof import('./components/search/SearchTaskPanel.vue')['default']
     SightingTimeline: typeof import('./components/timeline/SightingTimeline.vue')['default']
+    StatsCards: typeof import('./components/admin/StatsCards.vue')['default']
   }
 }
