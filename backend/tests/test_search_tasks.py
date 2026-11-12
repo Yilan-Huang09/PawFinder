@@ -24,9 +24,9 @@ def _create_case(client, token: str) -> int:
         json={
             "pet_id": pet["pet_id"],
             "lost_time": (datetime.now() - timedelta(hours=4)).isoformat(timespec="seconds"),
-            "latitude": 30.21,
-            "longitude": 120.22,
-            "address": "江晖路公园",
+            "latitude": 29.8160,
+            "longitude": 106.4189,
+            "address": "西南大学南区樟树林",
         },
         headers=_headers(token),
     ).get_json()["data"]["case_id"]
@@ -37,8 +37,8 @@ def _create_area(client, token: str, case_id: int) -> dict:
         f"/api/v1/cases/{case_id}/areas",
         json={
             "area_name": "公园东区",
-            "center_latitude": 30.211,
-            "center_longitude": 120.221,
+            "center_latitude": 29.8170,
+            "center_longitude": 106.4200,
             "radius_meters": 900,
             "description": "沿公园出口巡查",
         },
@@ -131,8 +131,8 @@ def test_non_owner_cannot_create_search_area(client, user_factory, login):
         f"/api/v1/cases/{case_id}/areas",
         json={
             "area_name": "越权区域",
-            "center_latitude": 30.21,
-            "center_longitude": 120.22,
+            "center_latitude": 29.8160,
+            "center_longitude": 106.4189,
             "radius_meters": 500,
         },
         headers=_headers(other_token),

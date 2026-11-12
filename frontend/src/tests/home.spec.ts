@@ -13,9 +13,9 @@ const caseFixture = {
   pet_id: 1,
   publisher_id: 2,
   lost_time: '2026-11-08T07:40:00',
-  latitude: 30.2741,
-  longitude: 120.1551,
-  address: '西湖区文三路地铁站附近',
+  latitude: 29.8269,
+  longitude: 106.4253,
+  address: '西南大学北门天生路附近',
   description: '晨间散步时挣脱牵引绳。',
   contact_phone: '138****0002',
   status: 'SEARCHING' as const,
@@ -71,6 +71,6 @@ describe('HomeView', () => {
 
     expect(fetchCases).toHaveBeenCalledWith({ page: 1, per_page: 4, status: 'SEARCHING' })
     expect(wrapper.text()).toContain('豆包')
-    expect(wrapper.text()).toContain('西湖区文三路地铁站附近')
+    expect(wrapper.text()).toContain('西南大学北门天生路附近')
   })
 })

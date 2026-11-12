@@ -41,13 +41,13 @@ describe('form components and workflows', () => {
       props: { latitude: null, longitude: null, address: '' },
     })
 
-    await wrapper.find('input[name="latitude"]').setValue('30.2741')
-    await wrapper.find('input[name="longitude"]').setValue('120.1551')
-    await wrapper.find('input[name="address"]').setValue('文三路地铁站附近')
+    await wrapper.find('input[name="latitude"]').setValue('29.8269')
+    await wrapper.find('input[name="longitude"]').setValue('106.4253')
+    await wrapper.find('input[name="address"]').setValue('西南大学北门附近')
 
-    expect(wrapper.emitted('update:latitude')?.at(-1)).toEqual([30.2741])
-    expect(wrapper.emitted('update:longitude')?.at(-1)).toEqual([120.1551])
-    expect(wrapper.emitted('update:address')?.at(-1)).toEqual(['文三路地铁站附近'])
+    expect(wrapper.emitted('update:latitude')?.at(-1)).toEqual([29.8269])
+    expect(wrapper.emitted('update:longitude')?.at(-1)).toEqual([106.4253])
+    expect(wrapper.emitted('update:address')?.at(-1)).toEqual(['西南大学北门附近'])
   })
 
   it('previews and removes selected images', async () => {
@@ -83,9 +83,9 @@ describe('form components and workflows', () => {
 
     await wrapper.find('select[name="pet_id"]').setValue('1')
     await wrapper.find('input[name="lost_time"]').setValue('2026-11-09T12:00')
-    await wrapper.find('input[name="latitude"]').setValue('30.2741')
-    await wrapper.find('input[name="longitude"]').setValue('120.1551')
-    await wrapper.find('input[name="address"]').setValue('文三路地铁站附近')
+    await wrapper.find('input[name="latitude"]').setValue('29.8269')
+    await wrapper.find('input[name="longitude"]').setValue('106.4253')
+    await wrapper.find('input[name="address"]').setValue('西南大学北门附近')
     await wrapper.find('textarea[name="description"]').setValue('黑白边牧 戴红色项圈')
     await wrapper.find('button[data-test="optimize-description"]').trigger('click')
     await flushPromises()
@@ -98,8 +98,8 @@ describe('form components and workflows', () => {
     await flushPromises()
     expect(vi.mocked(createCase)).toHaveBeenCalledWith(expect.objectContaining({
       pet_id: 1,
-      latitude: 30.2741,
-      longitude: 120.1551,
+      latitude: 29.8269,
+      longitude: 106.4253,
     }))
   })
 })

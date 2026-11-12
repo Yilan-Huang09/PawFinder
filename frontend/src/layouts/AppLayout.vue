@@ -145,7 +145,7 @@ function logout() {
   height: 100vh;
   padding: 22px 16px;
   border-right: 1px solid var(--pf-color-border);
-  background: #4b3932;
+  background: #26362f;
   color: #ffffff;
 }
 
@@ -308,7 +308,7 @@ function logout() {
   min-height: 68px;
   padding: 0 32px;
   border-bottom: 1px solid var(--pf-color-border);
-  background: rgb(255 250 244 / 90%);
+  background: rgb(246 244 239 / 92%);
   backdrop-filter: blur(16px);
 }
 

@@ -124,8 +124,8 @@ watch(
   position: sticky;
   z-index: 1000;
   top: 0;
-  border-bottom: 1px solid rgb(239 223 213 / 82%);
-  background: rgb(255 250 244 / 88%);
+  border-bottom: 1px solid rgb(216 211 201 / 88%);
+  background: rgb(246 244 239 / 92%);
   backdrop-filter: blur(16px);
 }
 
@@ -147,9 +147,9 @@ watch(
   display: block;
   width: 38px;
   height: 38px;
-  border-radius: 13px;
+  border-radius: 8px;
   background: var(--pf-color-primary);
-  box-shadow: 0 7px 16px rgb(232 111 71 / 24%);
+  box-shadow: none;
 }
 
 .brand__pad,
@@ -275,7 +275,7 @@ watch(
 
 .public-footer {
   border-top: 1px solid var(--pf-color-border);
-  background: #4a3932;
+  background: #26362f;
   color: #ffffff;
 }
 
@@ -293,14 +293,14 @@ watch(
 
 .public-footer p {
   margin: 6px 0 0;
-  color: #d9c9c1;
+  color: #cbd5cf;
   font-size: 13px;
 }
 
 .public-footer__meta {
   display: flex;
   gap: 20px;
-  color: #d9c9c1;
+  color: #cbd5cf;
   font-size: 12px;
 }
 

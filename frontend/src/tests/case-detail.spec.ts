@@ -31,7 +31,7 @@ const match: CaseMatch = {
     seen_time: '2026-11-10T11:00:00',
     latitude: 30.276,
     longitude: 120.1573,
-    address: '学院路口',
+    address: '西南大学北门公交站',
     confidence: 5,
     status: 'ACTIVE',
     created_at: '2026-11-10T11:05:00',
@@ -61,24 +61,24 @@ describe('case detail components', () => {
     const wrapper = mount(SightingTimeline, { props: { sightings: [recent, old] as Sighting[] } })
 
     await wrapper.get('select[name="timeline_range"]').setValue('24')
-    expect(wrapper.text()).toContain('学院路口')
+    expect(wrapper.text()).toContain('西南大学北门公交站')
     expect(wrapper.text()).not.toContain('三天前的位置')
   })
 
   it('renders a useful coordinate list when no map key is configured', () => {
     const lostCase = {
       case_id: 1,
-      latitude: 30.2741,
-      longitude: 120.1551,
-      address: '文三路地铁站',
+      latitude: 29.8269,
+      longitude: 106.4253,
+      address: '西南大学北门',
     } as LostCase
     const wrapper = mount(CaseMap, {
       props: { lostCase, sightings: [match.sighting], areas: [], mapKey: '' },
     })
 
     expect(wrapper.find('[data-map-mode="fallback"]').exists()).toBe(true)
-    expect(wrapper.text()).toContain('文三路地铁站')
-    expect(wrapper.text()).toContain('30.274100')
-    expect(wrapper.text()).toContain('学院路口')
+    expect(wrapper.text()).toContain('西南大学北门')
+    expect(wrapper.text()).toContain('29.826900')
+    expect(wrapper.text()).toContain('西南大学北门公交站')
   })
 })

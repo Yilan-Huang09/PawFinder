@@ -29,9 +29,7 @@ const meta = computed(() => route.meta)
 .placeholder-page {
   min-height: calc(100vh - var(--pf-header-height));
   padding: 92px 0;
-  background:
-    radial-gradient(circle at 80% 12%, rgb(255 217 202 / 68%), transparent 24rem),
-    linear-gradient(145deg, var(--pf-color-cream), var(--pf-color-background) 58%);
+  background: var(--pf-color-background);
 }
 
 .placeholder-page__inner {

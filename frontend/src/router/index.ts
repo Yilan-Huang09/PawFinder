@@ -48,8 +48,8 @@ const router = createRouter({
           component: HomeView,
           meta: {
             eyebrow: '让每一次看见，都成为回家的线索',
-            title: '一起，把走失的它带回家',
-            description: 'PawFinder 正在准备行动优先的首页体验。',
+            title: '重庆附近寻宠线索与协作搜寻',
+            description: '查看西南大学周边走失事件、目击线索与志愿搜寻任务。',
           },
         },
         {

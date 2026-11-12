@@ -109,10 +109,10 @@ onMounted(load)
 <style scoped>
 .case-detail-page { min-height: 100vh; background: var(--pf-color-background); }
 .case-detail-loading { padding: 90px 0; }
-.case-detail-hero { padding: 30px 0 75px; background: linear-gradient(125deg, #fff0dc, #ffe0d5 63%, #e6f0e8); }
+.case-detail-hero { padding: 30px 0 75px; border-bottom: 1px solid var(--pf-color-border); background: #ece9e2; }
 .case-detail-back { display: inline-flex; align-items: center; gap: 5px; margin-bottom: 23px; color: var(--pf-color-text-secondary); font-size: 11px; font-weight: 700; }
 .case-detail-hero__grid { display: grid; grid-template-columns: 335px minmax(0, 1fr); align-items: center; gap: 55px; }
-.case-detail-photo { position: relative; display: grid; height: 335px; place-items: center; overflow: hidden; border: 8px solid rgb(255 255 255 / 58%); border-radius: 38% 38% 18% 18%; color: #855b49; background: linear-gradient(145deg, #f8d5b3, #f4b2a2); box-shadow: var(--pf-shadow-lg); font-size: 100px; font-weight: 900; }
+.case-detail-photo { position: relative; display: grid; height: 335px; place-items: center; overflow: hidden; border: 1px solid #c9c3b9; border-radius: var(--pf-radius-lg); color: #765548; background: #ead8cc; box-shadow: var(--pf-shadow-md); font-size: 100px; font-weight: 900; }
 .case-detail-photo img { width: 100%; height: 100%; object-fit: cover; }
 .case-detail-photo em { position: absolute; top: 25px; left: 27px; padding: 6px 11px; border-radius: 99px; color: #fff; background: var(--pf-color-primary); font-size: 10px; font-style: normal; }
 .case-detail-photo .case-detail-status--reunited { background: var(--pf-color-success); }

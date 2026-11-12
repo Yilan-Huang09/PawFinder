@@ -24,9 +24,9 @@ def _setup_case_and_task(client, owner_token: str, volunteer_token: str) -> tupl
         json={
             "pet_id": pet_id,
             "lost_time": (datetime.now() - timedelta(hours=8)).isoformat(timespec="seconds"),
-            "latitude": 30.26,
-            "longitude": 120.17,
-            "address": "文化广场",
+            "latitude": 29.8214,
+            "longitude": 106.4308,
+            "address": "天生丽街",
         },
         headers=_headers(owner_token),
     ).get_json()["data"]["case_id"]
@@ -34,8 +34,8 @@ def _setup_case_and_task(client, owner_token: str, volunteer_token: str) -> tupl
         f"/api/v1/cases/{case_id}/areas",
         json={
             "area_name": "地库区域",
-            "center_latitude": 30.261,
-            "center_longitude": 120.171,
+            "center_latitude": 29.8219,
+            "center_longitude": 106.4315,
             "radius_meters": 500,
         },
         headers=_headers(owner_token),
@@ -49,9 +49,9 @@ def _reunion_payload(finder_id: int | None = None) -> dict:
     return {
         "finder_id": finder_id,
         "reunion_time": (datetime.now() - timedelta(minutes=10)).isoformat(timespec="seconds"),
-        "latitude": 30.262,
-        "longitude": 120.172,
-        "address": "文化广场停车场",
+        "latitude": 29.8220,
+        "longitude": 106.4318,
+        "address": "天生丽街停车场",
         "method": "志愿者发现",
         "note": "健康状况良好",
     }

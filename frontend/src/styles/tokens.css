@@ -1,42 +1,43 @@
 :root {
-  --pf-color-primary: #e86f47;
-  --pf-color-primary-hover: #d75d38;
-  --pf-color-primary-dark: #b9482c;
-  --pf-color-coral-soft: #ffd9ca;
-  --pf-color-cream: #fff0dc;
-  --pf-color-background: #fffaf4;
+  --pf-color-primary: #d95735;
+  --pf-color-primary-hover: #c44829;
+  --pf-color-primary-dark: #9f3822;
+  --pf-color-coral-soft: #f4d8cf;
+  --pf-color-cream: #eeeae2;
+  --pf-color-background: #f6f4ef;
   --pf-color-surface: #ffffff;
-  --pf-color-surface-warm: #fff7ed;
-  --pf-color-sage: #70927a;
-  --pf-color-sage-dark: #4f715c;
-  --pf-color-sage-soft: #dfece4;
-  --pf-color-text: #43332d;
-  --pf-color-text-secondary: #7e685e;
-  --pf-color-text-tertiary: #a1887d;
-  --pf-color-border: #efdfd5;
+  --pf-color-surface-warm: #f2efe9;
+  --pf-color-sage: #527665;
+  --pf-color-sage-dark: #365846;
+  --pf-color-sage-soft: #dfe8e2;
+  --pf-color-text: #252525;
+  --pf-color-text-secondary: #5f605d;
+  --pf-color-text-tertiary: #85847e;
+  --pf-color-border: #d8d3c9;
   --pf-color-danger: #c94a43;
   --pf-color-success: #4f8a66;
 
-  --pf-font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
-    "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --pf-font-sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC",
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pf-font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", SimSun,
+    serif;
 
-  --pf-radius-sm: 8px;
-  --pf-radius-md: 14px;
-  --pf-radius-lg: 22px;
+  --pf-radius-sm: 6px;
+  --pf-radius-md: 9px;
+  --pf-radius-lg: 12px;
   --pf-radius-pill: 999px;
-  --pf-shadow-sm: 0 4px 18px rgb(100 65 48 / 8%);
-  --pf-shadow-md: 0 16px 42px rgb(100 65 48 / 12%);
-  --pf-shadow-focus: 0 0 0 3px rgb(232 111 71 / 20%);
+  --pf-shadow-sm: 0 2px 10px rgb(40 38 34 / 5%);
+  --pf-shadow-md: 0 12px 30px rgb(40 38 34 / 10%);
+  --pf-shadow-focus: 0 0 0 3px rgb(217 87 53 / 18%);
   --pf-content-width: 1180px;
   --pf-header-height: 68px;
 
   --el-color-primary: var(--pf-color-primary);
-  --el-color-primary-light-3: #ef9475;
-  --el-color-primary-light-5: #f4b7a1;
-  --el-color-primary-light-7: #f9d7ca;
-  --el-color-primary-light-8: #fbe5dd;
-  --el-color-primary-light-9: #fdf2ee;
+  --el-color-primary-light-3: #e47e63;
+  --el-color-primary-light-5: #eba997;
+  --el-color-primary-light-7: #f3cec4;
+  --el-color-primary-light-8: #f7ded8;
+  --el-color-primary-light-9: #fbefec;
   --el-color-primary-dark-2: var(--pf-color-primary-dark);
   --el-border-radius-base: var(--pf-radius-sm);
   --el-border-color: var(--pf-color-border);
@@ -50,10 +51,10 @@
    specific selector keeps PawFinder's theme stable regardless of load order. */
 html:root {
   --el-color-primary: var(--pf-color-primary);
-  --el-color-primary-light-3: #ef9475;
-  --el-color-primary-light-5: #f4b7a1;
-  --el-color-primary-light-7: #f9d7ca;
-  --el-color-primary-light-8: #fbe5dd;
-  --el-color-primary-light-9: #fdf2ee;
+  --el-color-primary-light-3: #e47e63;
+  --el-color-primary-light-5: #eba997;
+  --el-color-primary-light-7: #f3cec4;
+  --el-color-primary-light-8: #f7ded8;
+  --el-color-primary-light-9: #fbefec;
   --el-color-primary-dark-2: var(--pf-color-primary-dark);
 }

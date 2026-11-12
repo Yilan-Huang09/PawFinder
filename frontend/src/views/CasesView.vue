@@ -179,7 +179,7 @@ watch(() => route.query, loadFromRoute, { immediate: true })
 
 <style scoped>
 .cases-page { min-height: 100vh; }
-.cases-hero { position: relative; overflow: hidden; background: linear-gradient(120deg, #fff0dd, #ffe2d6 65%, #e8f1ea); }
+.cases-hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--pf-color-border); background: #ece9e2; }
 .cases-hero__inner { display: flex; align-items: center; justify-content: space-between; min-height: 275px; gap: 40px; padding-top: 40px; padding-bottom: 58px; }
 .cases-hero__inner > div:first-child { position: relative; z-index: 2; }
 .cases-hero__inner > div:first-child > span { color: var(--pf-color-primary); font-size: 10px; font-weight: 800; letter-spacing: .16em; }

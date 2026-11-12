@@ -10,7 +10,7 @@ const notification: AppNotification = {
   user_id: 1,
   type: 'MATCH_FOUND',
   title: '发现高分线索',
-  content: '文三路附近有一条 90.5 分候选线索。',
+  content: '天生路附近有一条 90.5 分候选线索。',
   related_case_id: 1,
   related_match_id: 2,
   related_task_id: null,

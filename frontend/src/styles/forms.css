@@ -1,9 +1,7 @@
 .workflow-page {
   min-height: calc(100vh - 68px);
   padding: 42px 0 80px;
-  background:
-    radial-gradient(circle at 92% 5%, rgb(255 217 202 / 52%), transparent 20rem),
-    var(--pf-color-background);
+  background: var(--pf-color-background);
 }
 
 .workflow-heading {

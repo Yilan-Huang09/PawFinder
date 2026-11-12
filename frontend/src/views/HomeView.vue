@@ -67,10 +67,10 @@ onMounted(loadNearbyCases)
         <div class="home-hero__copy">
           <span class="home-hero__eyebrow">
             <span class="home-hero__live-dot" />
-            让每一次看见，都成为回家的线索
+            重庆 · 北碚区 · 西南大学周边
           </span>
-          <h1>一起，把走失的它<br /><em>带回家</em></h1>
-          <p>连接宠物主人、目击者与志愿者，用时空线索匹配和清晰任务协作，让每一份善意更有效。</p>
+          <h1>今天，重庆还有宠物<br />正在<em>等待线索</em></h1>
+          <p>查看附近走失信息、提交目击位置，或认领一段搜寻路线。每一条准确记录，都可能缩短它回家的距离。</p>
           <div class="home-hero__buttons">
             <RouterLink to="/cases/new" class="hero-button hero-button--primary">
               <el-icon><DocumentAdd /></el-icon>
@@ -88,26 +88,31 @@ onMounted(loadNearbyCases)
         </div>
 
         <div class="home-hero__visual">
-          <div class="hero-pet" aria-hidden="true">
-            <span class="hero-pet__ear hero-pet__ear--left" />
-            <span class="hero-pet__ear hero-pet__ear--right" />
-            <span class="hero-pet__face">
-              <i class="hero-pet__eye hero-pet__eye--left" />
-              <i class="hero-pet__eye hero-pet__eye--right" />
-              <i class="hero-pet__nose" />
-              <i class="hero-pet__smile" />
-            </span>
-            <span class="hero-pet__collar" />
-          </div>
-          <span class="hero-paw hero-paw--one">· ·<b>●</b></span>
-          <span class="hero-paw hero-paw--two">· ·<b>●</b></span>
+          <aside class="campus-board" aria-label="西南大学周边寻宠概况">
+            <header>
+              <div>
+                <span>当前服务区域</span>
+                <strong>西南大学北碚校区</strong>
+              </div>
+              <em>实时更新</em>
+            </header>
+            <dl>
+              <div><dt>寻找中</dt><dd>4 <small>起</small></dd></div>
+              <div><dt>有效目击</dt><dd>15 <small>条</small></dd></div>
+              <div><dt>待认领任务</dt><dd>3 <small>项</small></dd></div>
+            </dl>
+            <div class="campus-board__update">
+              <span>最近更新</span>
+              <p><strong>豆包</strong> · 天生路附近新增目击记录</p>
+              <time>10 分钟前</time>
+            </div>
+          </aside>
 
-          <form class="quick-search pf-card" action="/cases" method="get">
-            <label for="home-search">快速寻找</label>
-            <p>输入地点、宠物名字或品种</p>
+          <form class="quick-search" action="/cases" method="get">
+            <label for="home-search">搜索附近事件</label>
             <div class="quick-search__field">
               <el-icon><Search /></el-icon>
-              <input id="home-search" name="keyword" placeholder="例如：文三路 / 豆包" />
+              <input id="home-search" name="keyword" placeholder="例如：天生路 / 豆包" />
               <button type="submit" aria-label="搜索">
                 <el-icon><ArrowRight /></el-icon>
               </button>
@@ -145,9 +150,9 @@ onMounted(loadNearbyCases)
       <div class="pf-container">
         <header class="section-heading">
           <div>
-            <span class="section-heading__eyebrow">NEARBY SEARCHES</span>
+            <span class="section-heading__eyebrow">西南大学周边</span>
             <h2>附近正在寻找</h2>
-            <p>优先展示最新发布的事件，也许你刚好见过它。</p>
+            <p>按发布时间展示重庆北碚区的最新事件，也许你刚好见过它。</p>
           </div>
           <RouterLink to="/cases" class="section-heading__link">
             查看全部 <el-icon><ArrowRight /></el-icon>
@@ -195,7 +200,7 @@ onMounted(loadNearbyCases)
           </div>
         </div>
         <div class="collaboration-copy">
-          <span class="section-heading__eyebrow">COLLABORATIVE MAP</span>
+          <span class="section-heading__eyebrow">协作搜寻地图</span>
           <h2>把“我去找找”变成<br />清楚的协作行动</h2>
           <p>主人划分搜寻区域，志愿者认领任务并更新进度。所有人看见同一份状态，减少重复搜寻。</p>
           <ul>
@@ -207,15 +212,6 @@ onMounted(loadNearbyCases)
             <el-icon><Position /></el-icon> 打开协作任务
           </RouterLink>
         </div>
-      </div>
-    </section>
-
-    <section class="home-stats">
-      <div class="pf-container home-stats__grid">
-        <div><strong>4</strong><span>演示事件正在寻找</span></div>
-        <div><strong>15</strong><span>结构化目击线索</span></div>
-        <div><strong>12</strong><span>可解释候选匹配</span></div>
-        <div><strong>1</strong><span>完整寻回样例</span></div>
       </div>
     </section>
 
@@ -240,32 +236,28 @@ onMounted(loadNearbyCases)
 
 .home-hero {
   position: relative;
-  background:
-    radial-gradient(circle at 84% 2%, rgb(255 255 255 / 68%) 0 11rem, transparent 11.2rem),
-    linear-gradient(125deg, #fff0da, #ffe1d5 64%, #f8cab8);
+  border-bottom: 1px solid var(--pf-color-border);
+  background: #ece9e2;
 }
 
 .home-hero__inner {
   display: grid;
-  min-height: 520px;
-  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 530px;
+  grid-template-columns: 1.04fr 0.96fr;
   align-items: center;
-  gap: 70px;
-  padding-top: 58px;
-  padding-bottom: 92px;
+  gap: 72px;
+  padding-top: 64px;
+  padding-bottom: 70px;
 }
 
 .home-hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 12px;
-  border: 1px solid rgb(255 255 255 / 70%);
-  border-radius: var(--pf-radius-pill);
-  color: var(--pf-color-primary-dark);
-  background: rgb(255 255 255 / 56%);
+  color: var(--pf-color-sage-dark);
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .home-hero__live-dot {
@@ -273,40 +265,30 @@ onMounted(loadNearbyCases)
   height: 7px;
   border-radius: 50%;
   background: var(--pf-color-primary);
-  box-shadow: 0 0 0 4px rgb(232 111 71 / 13%);
+  box-shadow: 0 0 0 4px rgb(217 87 53 / 12%);
 }
 
 .home-hero h1 {
-  margin: 22px 0 18px;
-  font-size: clamp(46px, 5.1vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -0.055em;
+  margin: 22px 0 20px;
+  max-width: 680px;
+  font-family: var(--pf-font-serif);
+  font-size: clamp(42px, 4.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
 }
 
 .home-hero h1 em {
-  position: relative;
   color: var(--pf-color-primary-dark);
   font-style: normal;
 }
 
-.home-hero h1 em::after {
-  position: absolute;
-  z-index: -1;
-  right: -4px;
-  bottom: 3px;
-  left: -4px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgb(255 255 255 / 72%);
-  content: '';
-}
-
 .home-hero__copy > p {
-  max-width: 570px;
+  max-width: 600px;
   margin: 0;
   color: var(--pf-color-text-secondary);
-  font-size: 16px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 1.9;
 }
 
 .home-hero__buttons {
@@ -323,7 +305,7 @@ onMounted(loadNearbyCases)
   gap: 8px;
   padding: 0 20px;
   border: 1px solid transparent;
-  border-radius: 11px;
+  border-radius: var(--pf-radius-sm);
   font-size: 14px;
   font-weight: 700;
   transition: transform 160ms ease, box-shadow 160ms ease;
@@ -336,13 +318,13 @@ onMounted(loadNearbyCases)
 .hero-button--primary {
   color: #ffffff;
   background: var(--pf-color-primary);
-  box-shadow: 0 12px 24px rgb(202 83 48 / 22%);
+  box-shadow: none;
 }
 
 .hero-button--secondary {
-  border-color: #edcdbc;
-  color: var(--pf-color-primary-dark);
-  background: rgb(255 255 255 / 82%);
+  border-color: #b9b4aa;
+  color: var(--pf-color-text);
+  background: transparent;
 }
 
 .home-hero__trust {
@@ -364,91 +346,48 @@ onMounted(loadNearbyCases)
 }
 
 .home-hero__visual {
-  position: relative;
-  min-height: 370px;
+  display: grid;
+  gap: 12px;
 }
 
-.hero-pet {
-  position: absolute;
-  top: -2px;
-  right: 5px;
-  width: 285px;
-  height: 285px;
+.campus-board {
+  overflow: hidden;
+  border: 1px solid #c7c2b8;
+  border-radius: var(--pf-radius-lg);
+  background: var(--pf-color-surface);
+  box-shadow: var(--pf-shadow-md);
 }
+.campus-board header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid var(--pf-color-border); }
+.campus-board header div { display: grid; gap: 2px; }
+.campus-board header span { color: var(--pf-color-text-tertiary); font-size: 10px; }
+.campus-board header strong { font-family: var(--pf-font-serif); font-size: 19px; }
+.campus-board header em { padding: 4px 7px; border-radius: 4px; color: var(--pf-color-sage-dark); background: var(--pf-color-sage-soft); font-size: 9px; font-style: normal; font-weight: 700; }
+.campus-board dl { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-bottom: 1px solid var(--pf-color-border); }
+.campus-board dl div { display: grid; gap: 5px; padding: 18px 20px; border-right: 1px solid var(--pf-color-border); }
+.campus-board dl div:last-child { border-right: 0; }
+.campus-board dt { color: var(--pf-color-text-tertiary); font-size: 10px; }
+.campus-board dd { margin: 0; color: var(--pf-color-text); font-size: 25px; font-weight: 800; line-height: 1; }
+.campus-board dd small { color: var(--pf-color-text-tertiary); font-size: 9px; font-weight: 500; }
+.campus-board__update { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 17px 22px; }
+.campus-board__update > span { padding: 3px 6px; border-radius: 3px; color: #fff; background: var(--pf-color-primary); font-size: 9px; font-weight: 700; }
+.campus-board__update p { margin: 0; font-size: 11px; }
+.campus-board__update time { color: var(--pf-color-text-tertiary); font-size: 9px; }
 
-.hero-pet__ear {
-  position: absolute;
-  z-index: 1;
-  top: 45px;
-  width: 83px;
-  height: 130px;
-  border-radius: 70% 18% 50% 40%;
-  background: #9a5842;
-}
-
-.hero-pet__ear--left { left: 14px; transform: rotate(-28deg); }
-.hero-pet__ear--right { right: 14px; border-radius: 18% 70% 40% 50%; transform: rotate(28deg); }
-
-.hero-pet__face {
-  position: absolute;
-  z-index: 2;
-  right: 39px;
-  bottom: 18px;
-  left: 39px;
-  height: 218px;
-  border: 8px solid rgb(255 255 255 / 46%);
-  border-radius: 48% 48% 44% 44%;
-  background: linear-gradient(155deg, #f7c68e, #eca875);
-  box-shadow: 0 28px 50px rgb(157 82 55 / 22%);
-}
-
-.hero-pet__eye,
-.hero-pet__nose,
-.hero-pet__smile { position: absolute; display: block; }
-.hero-pet__eye { top: 84px; width: 15px; height: 20px; border-radius: 50%; background: #4c342c; }
-.hero-pet__eye--left { left: 56px; }
-.hero-pet__eye--right { right: 56px; }
-.hero-pet__nose { bottom: 59px; left: 50%; width: 29px; height: 20px; border-radius: 54% 54% 48% 48%; background: #4c342c; transform: translateX(-50%); }
-.hero-pet__smile { bottom: 39px; left: 50%; width: 42px; height: 22px; border-bottom: 3px solid #8d5742; border-radius: 50%; transform: translateX(-50%); }
-.hero-pet__collar { position: absolute; z-index: 3; right: 62px; bottom: 17px; left: 62px; height: 22px; border-radius: 8px; background: var(--pf-color-primary); transform: rotate(-2deg); }
-
-.hero-paw {
-  position: absolute;
-  color: rgb(185 85 52 / 25%);
-  font-size: 18px;
-  line-height: 0.45;
-  letter-spacing: 2px;
-  transform: rotate(-30deg);
-}
-
-.hero-paw b { display: block; font-size: 25px; text-align: center; }
-.hero-paw--one { top: 20px; left: 15px; }
-.hero-paw--two { top: 130px; left: -18px; transform: rotate(-10deg) scale(0.8); }
-
-.quick-search {
-  position: absolute;
-  z-index: 5;
-  right: 85px;
-  bottom: -22px;
-  width: min(340px, 88%);
-  padding: 20px;
-  box-shadow: 0 20px 50px rgb(110 66 46 / 18%);
-}
-
-.quick-search > label { display: block; font-size: 14px; font-weight: 800; }
-.quick-search > p { margin: 1px 0 11px; color: var(--pf-color-text-tertiary); font-size: 10px; }
-.quick-search__field { display: flex; align-items: center; height: 44px; gap: 8px; padding: 0 6px 0 12px; border: 1px solid var(--pf-color-border); border-radius: 9px; }
+.quick-search { padding: 16px 17px; border: 1px solid #c7c2b8; border-radius: var(--pf-radius-md); background: rgb(255 255 255 / 72%); }
+.quick-search > label { display: block; margin-bottom: 8px; font-size: 11px; font-weight: 800; }
+.quick-search__field { display: flex; align-items: center; height: 44px; gap: 8px; padding: 0 6px 0 12px; border: 1px solid var(--pf-color-border); border-radius: var(--pf-radius-sm); background: #fff; }
 .quick-search__field > .el-icon { color: var(--pf-color-primary); }
 .quick-search__field input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; font-size: 12px; }
-.quick-search__field button { display: grid; width: 33px; height: 33px; padding: 0; border: 0; place-items: center; border-radius: 8px; color: #fff; background: var(--pf-color-primary); cursor: pointer; }
+.quick-search__field button { display: grid; width: 33px; height: 33px; padding: 0; border: 0; place-items: center; border-radius: 4px; color: #fff; background: var(--pf-color-primary); cursor: pointer; }
 .quick-search__chips { display: flex; gap: 7px; margin-top: 10px; }
-.quick-search__chips a { padding: 4px 8px; border-radius: 5px; color: var(--pf-color-primary-dark); background: var(--pf-color-surface-warm); font-size: 10px; font-weight: 700; }
+.quick-search__chips a { padding: 3px 0; color: var(--pf-color-text-secondary); font-size: 10px; font-weight: 700; }
+.quick-search__chips a + a::before { margin-right: 7px; color: #aaa69e; content: '·'; }
 
-.home-actions { position: relative; z-index: 10; margin-top: -38px; }
+.home-actions { position: relative; z-index: 10; padding-top: 22px; }
 .home-actions__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.action-card { display: flex; align-items: center; min-height: 118px; gap: 14px; padding: 19px; box-shadow: 0 12px 30px rgb(100 65 48 / 10%); transition: transform 180ms ease, box-shadow 180ms ease; }
-.action-card:hover { box-shadow: var(--pf-shadow-md); transform: translateY(-4px); }
-.action-card__icon { display: grid; width: 48px; height: 48px; flex: 0 0 auto; place-items: center; border-radius: 14px; font-size: 22px; }
+.action-card { display: flex; align-items: center; min-height: 104px; gap: 14px; padding: 18px; box-shadow: none; transition: border-color 180ms ease, transform 180ms ease; }
+.action-card:hover { border-color: #aaa49a; transform: translateY(-2px); }
+.action-card__icon { display: grid; width: 43px; height: 43px; flex: 0 0 auto; place-items: center; border-radius: 7px; font-size: 20px; }
 .action-card--coral .action-card__icon { color: var(--pf-color-primary-dark); background: #ffe2d7; }
 .action-card--sage .action-card__icon { color: var(--pf-color-sage-dark); background: var(--pf-color-sage-soft); }
 .action-card--sand .action-card__icon { color: #886635; background: #f5e8cc; }
@@ -457,10 +396,10 @@ onMounted(loadNearbyCases)
 .action-card__content small { color: var(--pf-color-text-secondary); font-size: 11px; line-height: 1.55; }
 .action-card__arrow { margin-left: auto; color: var(--pf-color-primary); font-size: 20px; }
 
-.home-section { padding: 92px 0; }
+.home-section { padding: 82px 0; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 30px; }
-.section-heading__eyebrow { color: var(--pf-color-primary); font-size: 10px; font-weight: 800; letter-spacing: 0.15em; }
-.section-heading h2, .collaboration-copy h2 { margin: 5px 0 4px; font-size: clamp(28px, 3vw, 40px); line-height: 1.25; letter-spacing: -0.035em; }
+.section-heading__eyebrow { color: var(--pf-color-sage-dark); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; }
+.section-heading h2, .collaboration-copy h2 { margin: 5px 0 4px; font-family: var(--pf-font-serif); font-size: clamp(28px, 3vw, 38px); line-height: 1.3; letter-spacing: -0.025em; }
 .section-heading p { margin: 0; color: var(--pf-color-text-secondary); font-size: 13px; }
 .section-heading__link { display: inline-flex; align-items: center; gap: 5px; color: var(--pf-color-primary-dark); font-size: 13px; font-weight: 700; }
 .case-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
@@ -468,9 +407,9 @@ onMounted(loadNearbyCases)
 .case-skeleton__image { width: 100% !important; height: 188px !important; border-radius: 0 !important; }
 .case-skeleton__body { display: grid; gap: 12px; padding: 19px; }
 
-.home-collaboration { background: #f1f7f2; }
+.home-collaboration { border-block: 1px solid var(--pf-color-border); background: #edf1ed; }
 .collaboration-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; align-items: center; gap: 80px; }
-.map-preview { position: relative; height: 430px; overflow: hidden; border: 10px solid #fff; border-radius: 26px; background: #dbeae0; box-shadow: var(--pf-shadow-md); }
+.map-preview { position: relative; height: 430px; overflow: hidden; border: 1px solid #bfc9c1; border-radius: var(--pf-radius-lg); background: #dbe5de; box-shadow: var(--pf-shadow-sm); }
 .map-preview::before, .map-preview::after, .map-preview__roads { position: absolute; inset: -30% -20%; content: ''; }
 .map-preview::before { background: repeating-linear-gradient(32deg, transparent 0 57px, rgb(255 255 255 / 75%) 58px 69px, transparent 70px 118px); transform: rotate(3deg); }
 .map-preview::after { background: repeating-linear-gradient(118deg, transparent 0 84px, rgb(255 255 255 / 72%) 85px 94px, transparent 95px 160px); }
@@ -489,21 +428,14 @@ onMounted(loadNearbyCases)
 .collaboration-copy > p { margin: 16px 0 25px; color: var(--pf-color-text-secondary); font-size: 13px; line-height: 1.85; }
 .collaboration-copy ul { display: grid; gap: 15px; margin: 0 0 27px; padding: 0; list-style: none; }
 .collaboration-copy li { display: flex; align-items: center; gap: 13px; }
-.collaboration-copy li > span { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 10px; color: var(--pf-color-sage-dark); background: #fff; font-size: 10px; font-weight: 800; box-shadow: var(--pf-shadow-sm); }
+.collaboration-copy li > span { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border: 1px solid #cbd2cc; border-radius: 6px; color: var(--pf-color-sage-dark); background: #fff; font-size: 10px; font-weight: 800; }
 .collaboration-copy li div { display: grid; }
 .collaboration-copy li strong { font-size: 13px; }
 .collaboration-copy li small { color: var(--pf-color-text-secondary); font-size: 10px; }
 .inline-action { display: inline-flex; align-items: center; gap: 7px; padding: 11px 16px; border-radius: 9px; color: #fff; background: var(--pf-color-sage-dark); font-size: 12px; font-weight: 700; }
 
-.home-stats { background: #4b3932; color: #fff; }
-.home-stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-.home-stats__grid > div { display: grid; justify-items: center; gap: 2px; padding: 29px 20px; border-right: 1px solid rgb(255 255 255 / 12%); }
-.home-stats__grid > div:last-child { border-right: 0; }
-.home-stats strong { color: #ffb18f; font-size: 30px; line-height: 1; }
-.home-stats span { color: #d8c9c1; font-size: 10px; }
-
 .home-reunion { padding: 70px 0 90px; }
-.reunion-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding: 28px 34px; border: 1px solid #eadaca; border-radius: var(--pf-radius-lg); background: linear-gradient(105deg, #fff7e7, #fff 55%, #eef6f0); box-shadow: var(--pf-shadow-sm); }
+.reunion-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px; padding: 28px 34px; border: 1px solid var(--pf-color-border); border-radius: var(--pf-radius-lg); background: #fff; box-shadow: none; }
 .reunion-card__icon { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 50%; color: #fff; background: var(--pf-color-sage); font-size: 30px; box-shadow: 0 10px 24px rgb(79 113 92 / 20%); }
 .reunion-card span { color: var(--pf-color-sage-dark); font-size: 10px; font-weight: 800; letter-spacing: .06em; }
 .reunion-card h2 { margin: 3px 0 4px; font-size: 22px; }
@@ -519,20 +451,16 @@ onMounted(loadNearbyCases)
 @media (max-width: 820px) {
   .home-hero__inner { grid-template-columns: 1fr; padding-top: 48px; }
   .home-hero__copy { position: relative; z-index: 5; }
-  .home-hero__visual { display: none; }
-  .home-actions { margin-top: -44px; }
+  .home-actions { padding-top: 20px; }
   .home-actions__grid { grid-template-columns: 1fr; }
   .action-card { min-height: 94px; }
   .collaboration-grid { grid-template-columns: 1fr; }
   .map-preview { height: 360px; }
-  .home-stats__grid { grid-template-columns: repeat(2, 1fr); }
-  .home-stats__grid > div:nth-child(2) { border-right: 0; }
-  .home-stats__grid > div:nth-child(-n + 2) { border-bottom: 1px solid rgb(255 255 255 / 12%); }
 }
 
 @media (max-width: 640px) {
-  .home-hero__inner { min-height: auto; padding-top: 42px; padding-bottom: 88px; }
-  .home-hero h1 { font-size: 42px; overflow-wrap: anywhere; }
+  .home-hero__inner { min-height: auto; padding-top: 42px; padding-bottom: 52px; }
+  .home-hero h1 { font-size: 38px; overflow-wrap: anywhere; }
   .home-hero__copy > p { font-size: 14px; }
   .home-hero__buttons { align-items: stretch; flex-direction: column; }
   .home-hero__trust { align-items: flex-start; flex-direction: column; gap: 6px; }
@@ -544,7 +472,9 @@ onMounted(loadNearbyCases)
   .map-marker--case { top: 120px; left: 100px; }
   .map-marker--sighting { right: 28px; bottom: 70px; }
   .map-preview__legend { left: 12px; justify-content: center; }
-  .home-stats strong { font-size: 25px; }
+  .campus-board dl div { padding: 15px 12px; }
+  .campus-board__update { grid-template-columns: auto 1fr; }
+  .campus-board__update time { grid-column: 2; }
   .reunion-card { grid-template-columns: auto 1fr; padding: 24px 20px; }
   .reunion-card > a { grid-column: 1 / -1; justify-content: flex-end; }
 }

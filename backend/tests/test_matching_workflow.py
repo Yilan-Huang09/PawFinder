@@ -27,9 +27,9 @@ def _create_case(client, token: str) -> int:
         json={
             "pet_id": pet["pet_id"],
             "lost_time": (datetime.now() - timedelta(hours=3)).isoformat(timespec="seconds"),
-            "latitude": 30.2741,
-            "longitude": 120.1551,
-            "address": "文三路地铁站",
+            "latitude": 29.8269,
+            "longitude": 106.4253,
+            "address": "西南大学北门",
             "description": "戴红色项圈",
         },
         headers=_headers(token),
@@ -37,7 +37,7 @@ def _create_case(client, token: str) -> int:
     return lost_case["case_id"]
 
 
-def _create_sighting(client, token: str, latitude: float = 30.2760) -> int:
+def _create_sighting(client, token: str, latitude: float = 29.8278) -> int:
     response = client.post(
         "/api/v1/sightings",
         json={
@@ -49,8 +49,8 @@ def _create_sighting(client, token: str, latitude: float = 30.2760) -> int:
             "size_guess": "MEDIUM",
             "seen_time": (datetime.now() - timedelta(hours=1)).isoformat(timespec="seconds"),
             "latitude": latitude,
-            "longitude": 120.1573,
-            "address": "学院路口",
+            "longitude": 106.4278,
+            "address": "西南大学北门公交站",
             "confidence": 5,
             "description": "胸口有白毛，戴红色项圈",
         },

@@ -81,8 +81,8 @@ svg {
   width: 38%;
   height: 3px;
   border-radius: 0 3px 3px 0;
-  background: linear-gradient(90deg, var(--pf-color-primary), #f4a376);
-  box-shadow: 0 0 12px rgb(232 111 71 / 65%);
+  background: var(--pf-color-primary);
+  box-shadow: 0 0 12px rgb(217 87 53 / 45%);
   animation: request-loading 1.25s ease-in-out infinite;
 }
 

@@ -23,7 +23,7 @@ def _create_pet(client, token: str, name: str = "豆包", species: str = "DOG") 
     return response.get_json()["data"]["pet_id"]
 
 
-def _case_payload(pet_id: int, address: str = "文三路地铁站") -> dict:
+def _case_payload(pet_id: int, address: str = "西南大学北门") -> dict:
     return {
         "pet_id": pet_id,
         "lost_time": (datetime.now() - timedelta(hours=2)).isoformat(timespec="seconds"),
@@ -43,7 +43,7 @@ def test_owner_can_publish_and_public_can_filter_cases(client, user_factory, log
 
     dog_response = client.post(
         "/api/v1/cases",
-        json=_case_payload(dog_id, "文三路地铁站"),
+        json=_case_payload(dog_id, "西南大学北门"),
         headers=_headers(token),
     )
     assert dog_response.status_code == 201

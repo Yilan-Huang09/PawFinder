@@ -82,7 +82,7 @@ onMounted(loadPets)
 
 <style scoped>
 .pets-page { min-height: calc(100vh - 68px); }
-.pets-page__hero { padding: 45px 0 85px; background: linear-gradient(125deg, #fff0dc, #ffe1d5 68%, #e9f2eb); }
+.pets-page__hero { padding: 45px 0 85px; border-bottom: 1px solid var(--pf-color-border); background: #ece9e2; }
 .pets-page__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .pets-page__heading span { color: var(--pf-color-primary); font-size: 10px; font-weight: 800; letter-spacing: .15em; }
 .pets-page__heading h1 { margin: 5px 0; font-size: 40px; letter-spacing: -.04em; }
@@ -91,7 +91,7 @@ onMounted(loadPets)
 .pets-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .pet-card { overflow: hidden; }
 .pet-card--inactive { opacity: .68; filter: grayscale(.25); }
-.pet-card__portrait { position: relative; display: grid; height: 190px; place-items: center; overflow: hidden; color: #8b5c48; background: linear-gradient(145deg, #f8d8b8, #f4b9a6); font-size: 62px; font-weight: 900; }
+.pet-card__portrait { position: relative; display: grid; height: 190px; place-items: center; overflow: hidden; color: #765548; background: #ead8cc; font-size: 62px; font-weight: 900; }
 .pet-card__portrait img { width: 100%; height: 100%; object-fit: cover; }
 .pet-card__portrait small { position: absolute; top: 12px; right: 12px; padding: 4px 8px; border-radius: 999px; color: #fff; background: var(--pf-color-sage); font-size: 9px; }
 .pet-card__body { padding: 18px; }

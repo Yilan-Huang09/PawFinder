@@ -29,7 +29,7 @@ function numberValue(event: Event): number | null {
           name="address"
           :value="address"
           maxlength="255"
-          placeholder="例如：文三路地铁站 A 口附近"
+          placeholder="例如：西南大学北门附近"
           @input="emit('update:address', ($event.target as HTMLInputElement).value)"
         />
       </div>

@@ -8,7 +8,7 @@ def _headers(token: str) -> dict[str, str]:
     return {"Authorization": f"Bearer {token}"}
 
 
-def _sighting_payload(address: str = "学院路口") -> dict:
+def _sighting_payload(address: str = "西南大学北门公交站") -> dict:
     return {
         "species": "DOG",
         "breed_guess": "Border Collie",
@@ -17,8 +17,8 @@ def _sighting_payload(address: str = "学院路口") -> dict:
         "gender_guess": "FEMALE",
         "size_guess": "MEDIUM",
         "seen_time": (datetime.now() - timedelta(hours=1)).isoformat(timespec="seconds"),
-        "latitude": 30.276,
-        "longitude": 120.1573,
+        "latitude": 29.8278,
+        "longitude": 106.4278,
         "address": address,
         "direction": "向东",
         "confidence": 5,
@@ -43,7 +43,7 @@ def test_sighting_is_independent_and_publicly_listed(client, user_factory, login
     list_response = client.get("/api/v1/sightings?species=DOG")
     assert list_response.status_code == 200
     assert len(list_response.get_json()["data"]) == 1
-    assert list_response.get_json()["data"][0]["address"] == "学院路口"
+    assert list_response.get_json()["data"][0]["address"] == "西南大学北门公交站"
 
 
 def test_only_reporter_can_edit_or_invalidate_sighting(
