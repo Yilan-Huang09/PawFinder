@@ -10,7 +10,7 @@ import CaseMap from '@/components/maps/CaseMap.vue'
 import SightingTimeline from '@/components/timeline/SightingTimeline.vue'
 import { useAuthStore } from '@/stores/auth'
 import type { LostCase, SearchArea, Sighting } from '@/types/domain'
-import { caseStatusLabel, formatDateTime, resolveUploadUrl, speciesLabel } from '@/utils/format'
+import { breedLabel, caseStatusLabel, formatDateTime, resolveUploadUrl, speciesLabel } from '@/utils/format'
 
 const route = useRoute()
 const auth = useAuthStore()
@@ -90,7 +90,7 @@ onMounted(load)
           <div><strong>{{ sightings.length }}</strong><span>同类公开目击</span></div>
           <div><strong>{{ areas.length }}</strong><span>规划搜寻区域</span></div>
           <div><strong>{{ activeTaskCount }}</strong><span>进行中任务</span></div>
-          <div><strong>{{ lostCase.pet.breed || '未知' }}</strong><span>登记品种</span></div>
+          <div><strong>{{ breedLabel(lostCase.pet.breed) }}</strong><span>登记品种</span></div>
         </div>
         <div v-if="lostCase.description" class="case-detail-note pf-card"><span>主人补充</span><p>{{ lostCase.description }}</p></div>
         <div class="case-detail-grid">

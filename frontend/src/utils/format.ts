@@ -12,12 +12,33 @@ const STATUS_LABELS: Record<string, string> = {
   CLOSED: '已关闭',
 }
 
+const BREED_LABELS: Record<string, string> = {
+  'Border Collie': '边境牧羊犬',
+  'Shiba Inu': '柴犬',
+  'Domestic Shorthair': '中华田园猫',
+  'Golden Retriever': '金毛寻回犬',
+  'British Shorthair': '英国短毛猫',
+  'Bichon Frise': '比熊犬',
+  'Ragdoll': '布偶猫',
+  'Labrador Retriever': '拉布拉多犬',
+  'Corgi': '柯基犬',
+  'Poodle': '贵宾犬',
+  'Siamese': '暹罗猫',
+  'Mixed': '混种犬',
+  'Unknown': '品种未知',
+}
+
 export function speciesLabel(value: string): string {
   return SPECIES_LABELS[value] || value
 }
 
 export function caseStatusLabel(value: string): string {
   return STATUS_LABELS[value] || value
+}
+
+export function breedLabel(value?: string | null): string {
+  if (!value) return '品种未知'
+  return BREED_LABELS[value] || value
 }
 
 export function formatDateTime(value: string): string {

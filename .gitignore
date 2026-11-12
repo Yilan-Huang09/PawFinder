@@ -25,6 +25,10 @@ playwright-report/
 # Runtime data
 backend/uploads/*
 !backend/uploads/.gitkeep
+!backend/uploads/demo/
+!backend/uploads/demo/pets/
+!backend/uploads/demo/pets/*.jpg
+!backend/uploads/demo/pets/ATTRIBUTION.md
 .tmp/
 *.log
 

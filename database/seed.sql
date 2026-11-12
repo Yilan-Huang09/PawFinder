@@ -25,7 +25,7 @@ INSERT INTO pets (
   pet_id, owner_id, name, species, breed, primary_color, secondary_color,
   gender, size, birth_date, distinctive_features, status
 ) VALUES
-  (1, 2, '豆包', 'DOG', 'Border Collie', 'BLACK', 'WHITE', 'FEMALE', 'MEDIUM', '2022-05-12', '胸口白色心形毛，红色项圈', 'ACTIVE'),
+  (1, 2, '点点', 'DOG', 'Border Collie', 'BLACK', 'WHITE', 'FEMALE', 'MEDIUM', '2022-05-12', '胸口白色心形毛，红色项圈', 'ACTIVE'),
   (2, 3, '橘子', 'CAT', 'Domestic Shorthair', 'ORANGE', 'WHITE', 'MALE', 'MEDIUM', '2021-08-20', '左耳有小缺口，白色前爪', 'ACTIVE'),
   (3, 2, '年糕', 'CAT', 'British Shorthair', 'GRAY', NULL, 'FEMALE', 'MEDIUM', '2023-01-15', '圆脸，绿色眼睛', 'ACTIVE'),
   (4, 4, '麦麦', 'DOG', 'Golden Retriever', 'GOLDEN', NULL, 'MALE', 'LARGE', '2020-10-03', '蓝色胸背，尾巴末端颜色较浅', 'ACTIVE'),
@@ -39,7 +39,7 @@ INSERT INTO pets (
   (12, 7, '泡泡', 'DOG', 'Poodle', 'BROWN', NULL, 'FEMALE', 'SMALL', '2022-11-23', '黄色铃铛项圈', 'ACTIVE');
 
 INSERT INTO pet_photos (photo_id, pet_id, photo_url, is_cover, sort_order) VALUES
-  (1, 1, 'demo/pets/doubao-cover.jpg', TRUE, 0),
+  (1, 1, 'demo/pets/diandian-cover.jpg', TRUE, 0),
   (2, 1, 'demo/pets/doubao-side.jpg', FALSE, 1),
   (3, 2, 'demo/pets/juzi-cover.jpg', TRUE, 0),
   (4, 3, 'demo/pets/niangao-cover.jpg', TRUE, 0),

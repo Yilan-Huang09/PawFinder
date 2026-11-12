@@ -103,7 +103,7 @@ onMounted(loadNearbyCases)
             </dl>
             <div class="campus-board__update">
               <span>最近更新</span>
-              <p><strong>豆包</strong> · 天生路附近新增目击记录</p>
+              <p><strong>点点</strong> · 天生路附近新增目击记录</p>
               <time>10 分钟前</time>
             </div>
           </aside>
@@ -112,7 +112,7 @@ onMounted(loadNearbyCases)
             <label for="home-search">搜索附近事件</label>
             <div class="quick-search__field">
               <el-icon><Search /></el-icon>
-              <input id="home-search" name="keyword" placeholder="例如：天生路 / 豆包" />
+              <input id="home-search" name="keyword" placeholder="例如：天生路 / 点点" />
               <button type="submit" aria-label="搜索">
                 <el-icon><ArrowRight /></el-icon>
               </button>

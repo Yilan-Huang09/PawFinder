@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 import { deactivatePet, fetchPets } from '@/api/pets'
 import EmptyState from '@/components/common/EmptyState.vue'
 import type { PetSummary } from '@/types/domain'
-import { resolveUploadUrl, speciesLabel } from '@/utils/format'
+import { breedLabel, resolveUploadUrl, speciesLabel } from '@/utils/format'
 
 const pets = ref<PetSummary[]>([])
 const loading = ref(true)
@@ -63,7 +63,7 @@ onMounted(loadPets)
             <small>{{ pet.status === 'ACTIVE' ? '使用中' : '已停用' }}</small>
           </div>
           <div class="pet-card__body">
-            <span>{{ speciesLabel(pet.species) }} · {{ pet.breed || '品种未知' }}</span>
+            <span>{{ speciesLabel(pet.species) }} · {{ breedLabel(pet.breed) }}</span>
             <h2>{{ pet.name }}</h2>
             <p>{{ pet.primary_color }}{{ pet.secondary_color ? ` / ${pet.secondary_color}` : '' }} · {{ pet.size }}</p>
             <p class="pet-card__feature">{{ pet.distinctive_features || '还没有填写明显特征' }}</p>

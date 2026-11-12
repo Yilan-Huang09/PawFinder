@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 
 import type { LostCase } from '@/types/domain'
 import {
+  breedLabel,
   caseStatusLabel,
   formatRelativeTime,
   resolveUploadUrl,
@@ -41,7 +42,7 @@ const statusClass = computed(() => `case-card__status--${props.lostCase.status.t
     <div class="case-card__body">
       <div class="case-card__heading">
         <div>
-          <span>{{ speciesLabel(lostCase.pet.species) }} · {{ lostCase.pet.breed || '品种未知' }}</span>
+          <span>{{ speciesLabel(lostCase.pet.species) }} · {{ breedLabel(lostCase.pet.breed) }}</span>
           <h3>寻找“{{ lostCase.pet.name }}”</h3>
         </div>
         <span class="case-card__id">#{{ lostCase.case_id }}</span>

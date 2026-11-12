@@ -25,7 +25,7 @@ const caseFixture = {
   pet: {
     pet_id: 1,
     owner_id: 2,
-    name: '豆包',
+    name: '点点',
     species: 'DOG',
     breed: 'Border Collie',
     primary_color: 'BLACK',
@@ -70,7 +70,7 @@ describe('HomeView', () => {
     await flushPromises()
 
     expect(fetchCases).toHaveBeenCalledWith({ page: 1, per_page: 4, status: 'SEARCHING' })
-    expect(wrapper.text()).toContain('豆包')
+    expect(wrapper.text()).toContain('点点')
     expect(wrapper.text()).toContain('西南大学北门天生路附近')
   })
 })
