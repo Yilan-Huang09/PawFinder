@@ -18,6 +18,7 @@ import CaseMap from '@/components/maps/CaseMap.vue'
 import SearchTaskPanel from '@/components/search/SearchTaskPanel.vue'
 import { useAuthStore } from '@/stores/auth'
 import type { LostCase, SearchArea, SearchTask } from '@/types/domain'
+import { toLocalDateTimePayload } from '@/utils/format'
 
 const route = useRoute()
 const auth = useAuthStore()
@@ -170,7 +171,7 @@ async function reunite() {
   try {
     await confirmReunion(caseId.value, {
       finder_id: null,
-      reunion_time: `${reunionForm.reunion_time}:00`,
+      reunion_time: toLocalDateTimePayload(reunionForm.reunion_time),
       latitude: reunionForm.latitude,
       longitude: reunionForm.longitude,
       address: reunionForm.address.trim(),

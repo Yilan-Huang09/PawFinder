@@ -64,6 +64,12 @@ export function formatRelativeTime(value: string): string {
   return formatDateTime(value)
 }
 
+export function toLocalDateTimePayload(value: string): string {
+  const normalized = value.trim()
+  if (!normalized) return normalized
+  return normalized.length === 16 ? `${normalized}:00` : normalized
+}
+
 export function resolveUploadUrl(path?: string | null): string | null {
   if (!path) return null
   if (/^https?:\/\//i.test(path)) return path

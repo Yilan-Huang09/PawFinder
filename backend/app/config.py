@@ -26,6 +26,7 @@ class BaseConfig:
     SQLALCHEMY_ENGINE_OPTIONS = {
         "pool_pre_ping": True,
         "pool_recycle": 1800,
+        "connect_args": {"init_command": "SET time_zone = '+08:00'"},
     }
     JWT_SECRET_KEY = os.getenv(
         "JWT_SECRET_KEY",

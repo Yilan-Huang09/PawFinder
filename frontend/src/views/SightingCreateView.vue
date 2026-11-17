@@ -7,6 +7,7 @@ import { useRouter } from 'vue-router'
 import { createSighting, optimizeDescription, uploadSightingPhoto } from '@/api/workflows'
 import LocationFields from '@/components/forms/LocationFields.vue'
 import PhotoUploader from '@/components/uploads/PhotoUploader.vue'
+import { toLocalDateTimePayload } from '@/utils/format'
 
 const router = useRouter()
 const photos = ref<File[]>([])
@@ -33,6 +34,7 @@ function validate(): string {
   if (new Date(form.seenTime).getTime() > Date.now()) return '目击时间不能晚于当前时间'
   if (form.latitude === null || form.latitude < -90 || form.latitude > 90) return '纬度范围应为 -90 到 90'
   if (form.longitude === null || form.longitude < -180 || form.longitude > 180) return '经度范围应为 -180 到 180'
+  if (form.latitude === 0 && form.longitude === 0) return '经纬度不能同时为 0，请重新选择实际位置'
   if (form.address.trim().length < 2) return '请填写清楚的位置描述'
   return ''
 }
@@ -56,7 +58,7 @@ async function submitSighting() {
       species: form.species, breed_guess: form.breedGuess.trim() || null,
       primary_color: form.primaryColor.trim().toUpperCase(), secondary_color: form.secondaryColor.trim().toUpperCase() || null,
       gender_guess: form.genderGuess, size_guess: form.sizeGuess,
-      seen_time: new Date(form.seenTime).toISOString(), latitude: form.latitude!, longitude: form.longitude!,
+      seen_time: toLocalDateTimePayload(form.seenTime), latitude: form.latitude!, longitude: form.longitude!,
       address: form.address.trim(), direction: form.direction.trim() || null,
       confidence: form.confidence, description: form.description.trim() || null,
     })

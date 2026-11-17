@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def _headers(token: str) -> dict[str, str]:
@@ -103,6 +103,30 @@ def test_case_rejects_future_time_and_invalid_coordinates(
     )
     assert response.status_code == 422
     assert response.get_json()["code"] == "VALIDATION_ERROR"
+
+
+def test_offset_time_is_stored_as_asia_shanghai_local_time(
+    client, user_factory, login
+):
+    user_factory("timezone_case_owner")
+    token = login("timezone_case_owner")
+    pet_id = _create_pet(client, token)
+    submitted_utc = (datetime.now(timezone.utc) - timedelta(hours=2)).replace(
+        microsecond=0
+    )
+    china_timezone = timezone(timedelta(hours=8), name="Asia/Shanghai")
+    expected_local = submitted_utc.astimezone(china_timezone).replace(tzinfo=None)
+    payload = _case_payload(pet_id)
+    payload["lost_time"] = submitted_utc.isoformat()
+
+    response = client.post(
+        "/api/v1/cases",
+        json=payload,
+        headers=_headers(token),
+    )
+
+    assert response.status_code == 201
+    assert response.get_json()["data"]["lost_time"] == expected_local.isoformat()
 
 
 def test_only_owner_can_edit_and_closed_case_is_immutable(

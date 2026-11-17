@@ -4,6 +4,7 @@ import type { RouteLocationNormalized } from 'vue-router'
 
 import { authenticationGuard } from '@/router'
 import { useAuthStore } from '@/stores/auth'
+import { toLocalDateTimePayload } from '@/utils/format'
 
 describe('frontend foundation', () => {
   beforeEach(() => {
@@ -42,5 +43,9 @@ describe('frontend foundation', () => {
       name: 'login',
       query: { redirect: '/notifications' },
     })
+  })
+
+  it('keeps datetime-local values in Asia/Shanghai wall-clock time', () => {
+    expect(toLocalDateTimePayload('2026-11-17T17:30')).toBe('2026-11-17T17:30:00')
   })
 })

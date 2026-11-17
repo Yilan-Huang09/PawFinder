@@ -8,6 +8,7 @@ import { fetchPets } from '@/api/pets'
 import { createCase, optimizeDescription } from '@/api/workflows'
 import LocationFields from '@/components/forms/LocationFields.vue'
 import type { PetSummary } from '@/types/domain'
+import { toLocalDateTimePayload } from '@/utils/format'
 
 const router = useRouter()
 const pets = ref<PetSummary[]>([])
@@ -49,6 +50,7 @@ function validate(): string {
   if (new Date(form.lostTime).getTime() > Date.now()) return '最后出现时间不能晚于当前时间'
   if (form.latitude === null || form.latitude < -90 || form.latitude > 90) return '纬度范围应为 -90 到 90'
   if (form.longitude === null || form.longitude < -180 || form.longitude > 180) return '经度范围应为 -180 到 180'
+  if (form.latitude === 0 && form.longitude === 0) return '经纬度不能同时为 0，请重新选择实际位置'
   if (form.address.trim().length < 2) return '请填写清楚的位置描述'
   if (form.contactPhone && !/^1\d{10}$/.test(form.contactPhone)) return '联系电话格式不正确'
   return ''
@@ -80,7 +82,7 @@ async function submitCase() {
   try {
     const created = await createCase({
       pet_id: form.petId,
-      lost_time: new Date(form.lostTime).toISOString(),
+      lost_time: toLocalDateTimePayload(form.lostTime),
       latitude: form.latitude!,
       longitude: form.longitude!,
       address: form.address.trim(),

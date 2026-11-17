@@ -4,6 +4,8 @@
 
 推荐 MySQL 8.0.16 以上，字符集统一使用 `utf8mb4`。MySQL 8.0.11 至 8.0.15 会解析但不执行 `CHECK` 约束；项目的触发器和后端校验会覆盖关键范围规则，但课程演示应优先使用较新版本。
 
+所有业务 `DATETIME` 均按 `Asia/Shanghai`（UTC+8）本地时间保存。应用连接建立时执行 `SET time_zone = '+08:00'`，前端 `datetime-local` 值不转换为 UTC。
+
 ## 计划执行顺序
 
 ```text

@@ -116,6 +116,7 @@ describe('form components and workflows', () => {
     await flushPromises()
     expect(vi.mocked(createCase)).toHaveBeenCalledWith(expect.objectContaining({
       pet_id: 1,
+      lost_time: '2026-11-09T12:00:00',
       latitude: 29.8269,
       longitude: 106.4253,
     }))
