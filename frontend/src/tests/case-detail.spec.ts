@@ -65,7 +65,7 @@ describe('case detail components', () => {
     expect(wrapper.text()).not.toContain('三天前的位置')
   })
 
-  it('renders a useful coordinate list when no map key is configured', () => {
+  it('renders a real OpenStreetMap and coordinate list when no map key is configured', () => {
     const lostCase = {
       case_id: 1,
       latitude: 29.8269,
@@ -77,6 +77,7 @@ describe('case detail components', () => {
     })
 
     expect(wrapper.find('[data-map-mode="fallback"]').exists()).toBe(true)
+    expect(wrapper.get('iframe').attributes('src')).toContain('openstreetmap.org/export/embed.html')
     expect(wrapper.text()).toContain('西南大学北门')
     expect(wrapper.text()).toContain('29.826900')
     expect(wrapper.text()).toContain('西南大学北门公交站')

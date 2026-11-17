@@ -12,3 +12,5 @@
 10. 总结与扩展。
 
 正文重点展示 `sp_confirm_reunion`、原子认领条件更新、匹配公式和 `EXPLAIN`，不要只放页面截图。
+
+系统实现章节补充 Docker Compose 部署：Nginx 提供 Vue 静态资源并反向代理 Flask，Gunicorn 承载 API，MySQL 健康后按 `schema.sql → objects.sql → seed.sql` 初始化。该部分用于证明项目可重复构建，而不是替代数据库设计说明。

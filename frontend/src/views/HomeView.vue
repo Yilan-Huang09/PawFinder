@@ -189,15 +189,13 @@ onMounted(loadNearbyCases)
     <section class="home-section home-collaboration">
       <div class="pf-container collaboration-grid">
         <div class="map-preview">
-          <div class="map-preview__roads" />
-          <span class="map-marker map-marker--case"><i />走失地点</span>
-          <span class="map-marker map-marker--sighting"><i />新目击</span>
-          <span class="map-radius" />
-          <div class="map-preview__legend">
-            <span><i class="legend-dot legend-dot--coral" /> 事件</span>
-            <span><i class="legend-dot legend-dot--sage" /> 目击</span>
-            <span><i class="legend-ring" /> 搜寻区</span>
-          </div>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=106.4073%2C29.8149%2C106.4433%2C29.8389&amp;layer=mapnik&amp;marker=29.8269%2C106.4253"
+            title="西南大学北碚校区附近真实地图"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          />
+          <a href="https://www.openstreetmap.org/?mlat=29.8269&amp;mlon=106.4253#map=15/29.8269/106.4253" target="_blank" rel="noreferrer">查看完整地图 ↗</a>
         </div>
         <div class="collaboration-copy">
           <span class="section-heading__eyebrow">协作搜寻地图</span>
@@ -410,21 +408,8 @@ onMounted(loadNearbyCases)
 .home-collaboration { border-block: 1px solid var(--pf-color-border); background: #edf1ed; }
 .collaboration-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; align-items: center; gap: 80px; }
 .map-preview { position: relative; height: 430px; overflow: hidden; border: 1px solid #bfc9c1; border-radius: var(--pf-radius-lg); background: #dbe5de; box-shadow: var(--pf-shadow-sm); }
-.map-preview::before, .map-preview::after, .map-preview__roads { position: absolute; inset: -30% -20%; content: ''; }
-.map-preview::before { background: repeating-linear-gradient(32deg, transparent 0 57px, rgb(255 255 255 / 75%) 58px 69px, transparent 70px 118px); transform: rotate(3deg); }
-.map-preview::after { background: repeating-linear-gradient(118deg, transparent 0 84px, rgb(255 255 255 / 72%) 85px 94px, transparent 95px 160px); }
-.map-preview__roads { background: linear-gradient(90deg, transparent 48%, rgb(166 201 178 / 50%) 49% 52%, transparent 53%); transform: rotate(21deg); }
-.map-radius { position: absolute; z-index: 2; top: 80px; left: 118px; width: 210px; height: 210px; border: 2px dashed var(--pf-color-primary); border-radius: 50%; background: rgb(232 111 71 / 10%); }
-.map-marker { position: absolute; z-index: 4; display: flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 8px; background: #fff; box-shadow: var(--pf-shadow-sm); font-size: 10px; font-weight: 700; }
-.map-marker i { width: 12px; height: 12px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px currentColor; background: currentColor; }
-.map-marker--case { top: 155px; left: 205px; color: var(--pf-color-primary-dark); }
-.map-marker--sighting { right: 70px; bottom: 88px; color: var(--pf-color-sage-dark); }
-.map-preview__legend { position: absolute; z-index: 5; right: 15px; bottom: 15px; display: flex; gap: 12px; padding: 8px 10px; border-radius: 8px; background: rgb(255 255 255 / 90%); color: var(--pf-color-text-secondary); font-size: 9px; }
-.map-preview__legend span { display: flex; align-items: center; gap: 4px; }
-.legend-dot { width: 7px; height: 7px; border-radius: 50%; }
-.legend-dot--coral { background: var(--pf-color-primary); }
-.legend-dot--sage { background: var(--pf-color-sage); }
-.legend-ring { width: 9px; height: 9px; border: 1px dashed var(--pf-color-primary); border-radius: 50%; }
+.map-preview iframe { display: block; width: 100%; height: 100%; border: 0; }
+.map-preview > a { position: absolute; z-index: 2; right: 14px; bottom: 14px; padding: 7px 10px; border: 1px solid var(--pf-color-border); border-radius: 5px; color: var(--pf-color-text); background: rgb(255 255 255 / 94%); box-shadow: var(--pf-shadow-sm); font-size: 10px; font-weight: 700; }
 .collaboration-copy > p { margin: 16px 0 25px; color: var(--pf-color-text-secondary); font-size: 13px; line-height: 1.85; }
 .collaboration-copy ul { display: grid; gap: 15px; margin: 0 0 27px; padding: 0; list-style: none; }
 .collaboration-copy li { display: flex; align-items: center; gap: 13px; }
@@ -468,10 +453,6 @@ onMounted(loadNearbyCases)
   .section-heading { align-items: flex-start; flex-direction: column; }
   .case-grid { grid-template-columns: 1fr; }
   .map-preview { height: 300px; }
-  .map-radius { top: 55px; left: 45px; width: 170px; height: 170px; }
-  .map-marker--case { top: 120px; left: 100px; }
-  .map-marker--sighting { right: 28px; bottom: 70px; }
-  .map-preview__legend { left: 12px; justify-content: center; }
   .campus-board dl div { padding: 15px 12px; }
   .campus-board__update { grid-template-columns: auto 1fr; }
   .campus-board__update time { grid-column: 2; }

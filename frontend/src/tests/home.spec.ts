@@ -72,5 +72,6 @@ describe('HomeView', () => {
     expect(fetchCases).toHaveBeenCalledWith({ page: 1, per_page: 4, status: 'SEARCHING' })
     expect(wrapper.text()).toContain('点点')
     expect(wrapper.text()).toContain('西南大学北门天生路附近')
+    expect(wrapper.get('.map-preview iframe').attributes('src')).toContain('openstreetmap.org/export/embed.html')
   })
 })

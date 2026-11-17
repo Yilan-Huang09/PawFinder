@@ -17,6 +17,14 @@ tests/04_seed_expectations.sql
 queries.sql
 ```
 
+从项目根目录可通过统一入口完成前三步：
+
+```powershell
+mysql --host=127.0.0.1 --user=root --password --default-character-set=utf8mb4 --execute="source database/bootstrap.sql"
+```
+
+`bootstrap.sql` 包含演示数据，只能用于空数据库。Docker Compose 首次创建数据卷时也会自动按前三步初始化。
+
 `schema.sql` 不会删除数据库。重置开发数据库必须使用明确的独立命令，防止误删其他数据。
 
 `seed.sql` 只应在空的 PawFinder 数据库中执行。它会创建 9 个账号、12 个宠物、6 个走失事件、15 条线索、12 个匹配结果和 8 个搜寻任务。
