@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2026-11-11T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="pawfinder-er" name="PawFinder ER">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="u" value="users&#xa;PK user_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4b3932;fontColor=#ffffff;strokeColor=#4b3932;" vertex="1" parent="1"><mxGeometry x="60" y="60" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="p" value="pets&#xa;PK pet_id · FK owner_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe2d6;strokeColor=#e86f47;" vertex="1" parent="1"><mxGeometry x="330" y="60" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="pp" value="pet_photos&#xa;FK pet_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf4;strokeColor=#e7d4c8;" vertex="1" parent="1"><mxGeometry x="650" y="30" width="180" height="60" as="geometry"/></mxCell>
+        <mxCell id="lc" value="lost_cases&#xa;FK pet_id · publisher_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe2d6;strokeColor=#e86f47;" vertex="1" parent="1"><mxGeometry x="650" y="140" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="s" value="sightings&#xa;FK reporter_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3efe5;strokeColor=#719176;" vertex="1" parent="1"><mxGeometry x="330" y="280" width="200" height="60" as="geometry"/></mxCell>
+        <mxCell id="sp" value="sighting_photos&#xa;FK sighting_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf4;strokeColor=#e7d4c8;" vertex="1" parent="1"><mxGeometry x="60" y="300" width="190" height="60" as="geometry"/></mxCell>
+        <mxCell id="m" value="case_sighting_matches&#xa;FK case_id · sighting_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0dc;strokeColor=#d39861;" vertex="1" parent="1"><mxGeometry x="650" y="280" width="240" height="60" as="geometry"/></mxCell>
+        <mxCell id="a" value="search_areas&#xa;FK case_id · created_by" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3efe5;strokeColor=#719176;" vertex="1" parent="1"><mxGeometry x="980" y="110" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="t" value="search_tasks&#xa;FK area_id · volunteer_id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3efe5;strokeColor=#719176;" vertex="1" parent="1"><mxGeometry x="980" y="240" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="r" value="reunion_records&#xa;FK case_id · finder_id · confirmed_by" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0dc;strokeColor=#d39861;" vertex="1" parent="1"><mxGeometry x="980" y="370" width="260" height="60" as="geometry"/></mxCell>
+        <mxCell id="n" value="notifications&#xa;FK user_id · case/match/task" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf4;strokeColor=#e7d4c8;" vertex="1" parent="1"><mxGeometry x="650" y="450" width="240" height="60" as="geometry"/></mxCell>
+        <mxCell id="e1" value="1 : N" edge="1" parent="1" source="u" target="p" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="1 : N" edge="1" parent="1" source="p" target="pp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="1 : N" edge="1" parent="1" source="p" target="lc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="1 : N" edge="1" parent="1" source="u" target="s" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="1 : N" edge="1" parent="1" source="s" target="sp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="N : M" edge="1" parent="1" source="lc" target="m" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="N : M" edge="1" parent="1" source="s" target="m" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="1 : N" edge="1" parent="1" source="lc" target="a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="1 : 1" edge="1" parent="1" source="a" target="t" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="1 : 0..1" edge="1" parent="1" source="lc" target="r" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="1 : N" edge="1" parent="1" source="u" target="n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
