@@ -77,4 +77,13 @@ describe('authentication views', () => {
     expect(wrapper.text()).toContain('两次输入的密码不一致')
     expect(apiClient.post).not.toHaveBeenCalled()
   })
+
+  it('keeps registration controls inside responsive grid columns', () => {
+    const wrapper = mount(RegisterView, {
+      global: { plugins: [testRouter] },
+    })
+
+    expect(wrapper.findAll('.register-input')).toHaveLength(5)
+    expect(wrapper.findAll('.register-form__row')).toHaveLength(2)
+  })
 })

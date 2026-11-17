@@ -176,7 +176,7 @@ async function submitRegistration() {
 
 .register-form__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -196,6 +196,8 @@ async function submitRegistration() {
 .register-input {
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 0;
   gap: 8px;
   height: 44px;
   padding: 0 11px;
@@ -215,6 +217,7 @@ async function submitRegistration() {
 }
 
 .register-input input {
+  width: 100%;
   min-width: 0;
   flex: 1;
   border: 0;

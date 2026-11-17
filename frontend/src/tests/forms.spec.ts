@@ -50,6 +50,24 @@ describe('form components and workflows', () => {
     expect(wrapper.emitted('update:address')?.at(-1)).toEqual(['西南大学北门附近'])
   })
 
+  it('offers reliable Chongqing coordinate shortcuts and fixes swapped values', async () => {
+    const presetWrapper = mount(LocationFields, {
+      props: { latitude: null, longitude: null, address: '' },
+    })
+
+    await presetWrapper.get('[data-test="use-swu-location"]').trigger('click')
+    expect(presetWrapper.emitted('update:latitude')?.at(-1)).toEqual([29.8269])
+    expect(presetWrapper.emitted('update:longitude')?.at(-1)).toEqual([106.4253])
+    expect(presetWrapper.emitted('update:address')?.at(-1)).toEqual(['西南大学北门天生路附近'])
+
+    const swappedWrapper = mount(LocationFields, {
+      props: { latitude: 106.4253, longitude: 29.8269, address: '西南大学' },
+    })
+    await swappedWrapper.get('[data-test="swap-coordinates"]').trigger('click')
+    expect(swappedWrapper.emitted('update:latitude')?.at(-1)).toEqual([29.8269])
+    expect(swappedWrapper.emitted('update:longitude')?.at(-1)).toEqual([106.4253])
+  })
+
   it('previews and removes selected images', async () => {
     const wrapper = mount(PhotoUploader, {
       props: { modelValue: [], maxFiles: 2 },
